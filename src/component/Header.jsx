@@ -1,0 +1,35 @@
+import React from "react";
+import styled from "styled-components";
+
+// 상단바 전체 박스
+const Bar = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 90px;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+`;
+
+// 상단바 로고
+const Logo = styled.img`
+  position: absolute;
+  width: 227px;
+  height: 69px;
+  left: 145px;
+  top: 12px;
+`;
+
+// 상단바 컴포넌트
+const Header = () => {
+  return (
+    <div>
+      <Bar>
+        <Logo src={"/img/logo.png"} alt="ASSEMBLE" />
+      </Bar>
+    </div>
+  );
+};
+
+export default Header;

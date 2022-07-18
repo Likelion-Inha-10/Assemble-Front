@@ -1,0 +1,15 @@
+.header {
+  position: fixed;
+  top: 0; left: 0;
+  height: 90px;
+  width: 100%;
+  background-color: white;
+}
+
+.img {
+  position: absolute;
+  width: 227px;
+  height: 69px;
+  left: 145px;
+  top: 12px;
+}

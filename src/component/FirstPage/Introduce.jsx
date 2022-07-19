@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 // 전체 배경
 const Background = styled.div`
-  width: 1512px;
+  width: 100%;
   height: 919px;
 
   background: linear-gradient(
@@ -76,7 +77,7 @@ const SmallText = styled.div`
 // 회원가입 버튼
 const SignIn = styled.div`
   box-sizing: border-box;
-
+    
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -118,8 +119,16 @@ const Login = styled.div`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 
+
 // 웹 서비스 소개 페이지 메인 부분
+// 회원가입 버튼을 누르면 회원가입 페이지로 이동
 const Introduce = () => {
+  const navigate = useNavigate();
+
+  const goToSign = () => {
+    navigate("/SignIn");
+  }
+
   return (
     <>
       <Background>
@@ -133,7 +142,7 @@ const Introduce = () => {
             ASSEMBLE은 쉽고, 편리한 협업을 지원하는 서비스입니다 지금 바로
             ASSEMBLE 을 시작하세요
           </SmallText>
-          <SignIn>회원가입</SignIn>
+          <SignIn onClick={goToSign}>회원가입</SignIn>
           <Login>로그인</Login>
         </TextBox>
         <BackImageBox>

@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../component/Header";
-import Introduce from "../component/FirstPage/Introduce";
+import Introduce from '../component/FirstPage/Introduce';
 
 // 웹 서비스 소개 페이지
 const FirstPage = () => {

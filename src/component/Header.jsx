@@ -3,9 +3,6 @@ import styled from "styled-components";
 
 // 상단바 전체 박스
 const Bar = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
   height: 90px;
   width: 100%;
   background-color: white;

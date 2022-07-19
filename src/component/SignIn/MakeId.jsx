@@ -41,6 +41,7 @@ const InputId = styled.div`
   .inputId {
     width: 256px;
     height: 43px;
+    left: 630px;
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-radius: 3px;
     text-align: center;
@@ -71,6 +72,7 @@ const InputPwd = styled.div`
   .inputPwd {
     width: 256px;
     height: 43px;
+    left: 630px;
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-radius: 3px;
     text-align: center;
@@ -262,7 +264,7 @@ const MakeId = () => {
             </div>
             <input
               class="inputPwd"
-              type={"text"}
+              type={"password"}
               placeholder={"비밀번호를 입력해주세요"}
             ></input>
           </InputPwd>

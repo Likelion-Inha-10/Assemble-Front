@@ -4,355 +4,473 @@ import styled from "styled-components";
 // 상단바 밑에 부분 전체를 포함하고 있는 박스
 const Container = styled.div`
   width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 70px;
+  height: 100vh;
+
+  /* 첫번째 hr 태그 css */
+  .firsthr {
+    position: absolute;
+    width: 500px;
+    height: 0px;
+    left: 506px;
+    top: 278px;
+  }
+
+  /* 두번째 hr 태그 css */
+  .secondhr {
+    position: absolute;
+    width: 500px;
+    height: 0px;
+    left: 506px;
+    top: 759px;
+
+    border: 1px solid rgba(0, 0, 0, 0.5);
+  }
+
+  // 남자 선택지 css
+  .manRadio {
+    position: absolute;
+    width: 70px;
+    height: 16px;
+    left: 634px;
+    top: 661px;
+  }
+
+  // 여자 선택지 css
+  .womanRadio {
+    position: absolute;
+    width: 70px;
+    height: 16px;
+    left: 745px;
+    top: 661px;
+  }
+
+  // 선택안함 선택지 css
+  .nothingRadio {
+    position: absolute;
+    width: 90px;
+    height: 16px;
+    left: 856px;
+    top: 661px;
+  }
 `;
 
 // '회원가입' 텍스트 부분
 const SignInText = styled.div`
+  position: absolute;
+  width: 100px;
+  height: 35px;
+  left: 723px;
+  top: 180px;
+
+  font-family: "Noto Sans KR";
+  font-style: normal;
   font-weight: 700;
   font-size: 24px;
-`;
-
-// 회원정보를 입력하는 부분을 포함하고 있는 박스
-const MiddleContainer = styled.div`
-  width: 570px;
-  margin-top: 30px;
+  line-height: 35px;
 `;
 
 // '* 필수 입력사항' 부분
 const SmallNotice = styled.div`
+  position: absolute;
+  width: 90px;
+  height: 17px;
+  left: 921px;
+  top: 250px;
+
+  font-family: "Noto Sans KR";
+  font-style: normal;
   font-weight: 400;
   font-size: 12px;
-  text-align: end;
+  line-height: 17px;
+`;
+
+// '아이디' 텍스트 부분
+const IdText = styled.div`
+  position: absolute;
+  width: 56px;
+  height: 23px;
+  left: 510px;
+  top: 304px;
+
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
 `;
 
 // 아이디 입력 부분
-const InputId = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 15px;
+const InputId = styled.input`
+  box-sizing: border-box;
 
-  /* input 태그에 대한 css */
-  .inputId {
-    width: 256px;
-    height: 43px;
-    left: 630px;
-    border: 1px solid rgba(0, 0, 0, 0.5);
-    border-radius: 3px;
-    text-align: center;
-  }
+  position: absolute;
+  width: 256px;
+  height: 43px;
+  left: 630px;
+  top: 294px;
 
-  /* 중복확인 부분에 대한 css */
-  .checkId {
-    width: 80px;
-    height: 43px;
-    background: #ffffff;
-    border: 1px solid #073255;
-    border-radius: 8px;
-    color: #073255;
-    font-weight: 400;
-    font-size: 14px;
-  }
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 3px;
+  text-align: center;
+`;
+
+// 아이디 중복확인 버튼
+const IdCheck = styled.button`
+  box-sizing: border-box;
+
+  position: absolute;
+  width: 80px;
+  height: 43px;
+  left: 910px;
+  top: 294px;
+  text-align: center;
+
+  background: #ffffff;
+  border: 1px solid #073255;
+  border-radius: 8px;
+`;
+
+// '비밀번호' 텍스트
+const PwdText = styled.div`
+  position: absolute;
+  width: 75px;
+  height: 23px;
+  left: 510px;
+  top: 363px;
+
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
 `;
 
 // 비밀번호 입력 부분
-const InputPwd = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 15px;
-  padding-right: 165px;
+const InputPwd = styled.input`
+  box-sizing: border-box;
 
-  /* input 태그에 대한 css */
-  .inputPwd {
-    width: 256px;
-    height: 43px;
-    left: 630px;
-    border: 1px solid rgba(0, 0, 0, 0.5);
-    border-radius: 3px;
-    text-align: center;
-    margin-left: 55px;
-  }
+  position: absolute;
+  width: 256px;
+  height: 43px;
+  left: 630px;
+  top: 353px;
+  text-align: center;
+
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 3px;
+`;
+
+// '비밀번호 확인' 텍스트
+const CheckPwdText = styled.div`
+  position: absolute;
+  width: 110px;
+  height: 23px;
+  left: 510px;
+  top: 421px;
+
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
 `;
 
 // 비밀번호 확인 입력 부분
-const CheckPwd = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 15px;
-  padding-right: 165px;
+const InputCheckPwd = styled.input`
+  box-sizing: border-box;
 
-  /* input 태그에 대한 css */
-  .inputPwd {
-    width: 256px;
-    height: 43px;
-    border: 1px solid rgba(0, 0, 0, 0.5);
-    border-radius: 3px;
-    text-align: center;
-    margin-left: 18px;
-  }
+  position: absolute;
+  width: 256px;
+  height: 43px;
+  left: 630px;
+  top: 411px;
+  text-align: center;
+
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 3px;
+`;
+
+// '이름' 텍스트 부분
+const NameText = styled.div`
+  position: absolute;
+  width: 40px;
+  height: 23px;
+  left: 510px;
+  top: 481px;
+
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
 `;
 
 // 이름 입력 부분
-const InputName = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 15px;
-  padding-right: 165px;
+const InputName = styled.input`
+  box-sizing: border-box;
 
-  /* input 태그에 대한 css */
-  .inputName {
-    width: 256px;
-    height: 43px;
-    border: 1px solid rgba(0, 0, 0, 0.5);
-    border-radius: 3px;
-    text-align: center;
-    margin-left: 18px;
-  }
+  position: absolute;
+  width: 256px;
+  height: 43px;
+  left: 630px;
+  top: 471px;
+  text-align: center;
+
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 3px;
+`;
+
+// '이메일' 텍스트 부분
+const EmailText = styled.div`
+  position: absolute;
+  width: 55px;
+  height: 23px;
+  left: 510px;
+  top: 540px;
+
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
 `;
 
 // 이메일 입력 부분
-const InputEmail = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 15px;
+const InputEmail = styled.input`
+  box-sizing: border-box;
 
-  /* input 태그에 대한 css */
-  .inputEmail {
-    width: 256px;
-    height: 43px;
-    border: 1px solid rgba(0, 0, 0, 0.5);
-    border-radius: 3px;
-    text-align: center;
-  }
+  position: absolute;
+  width: 256px;
+  height: 43px;
+  left: 630px;
+  top: 530px;
+  text-align: center;
 
-  /* 중복확인 부분에 대한 css */
-  .checkEmail {
-    width: 80px;
-    height: 43px;
-    background: #ffffff;
-    border: 1px solid #073255;
-    border-radius: 8px;
-    color: #073255;
-    font-weight: 400;
-    font-size: 14px;
-  }
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 3px;
 `;
 
-// 전화번호 입력 부분
-const InputPhone = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 15px;
+// 이메일 중복확인 버튼
+const CheckEmail = styled.button`
+  box-sizing: border-box;
 
-  /* input 태그에 대한 css */
-  .inputPhone {
-    width: 256px;
-    height: 43px;
-    border: 1px solid rgba(0, 0, 0, 0.5);
-    border-radius: 3px;
-    text-align: center;
-    margin-left: 24px;
-  }
+  position: absolute;
+  width: 80px;
+  height: 43px;
+  left: 910px;
+  top: 530px;
+  text-align: center;
 
-  /* 인증번호 받기 부분에 대한 css */
-  .checkPhone {
-    width: 102px;
-    height: 43px;
+  background: #ffffff;
 
-    background: #ffffff;
-    border: 1px solid rgba(0, 0, 0, 0.5);
-    border-radius: 8px;
-  }
+  border: 1px solid #073255;
+  border-radius: 8px;
 `;
 
-// 성별 선택 부분
-const InputGender = styled.div`
-  display: flex;
-  /* justify-content: space-between; */
-  align-items: center;
-  margin-top: 15px;
+// '휴대폰' 텍스트 부분
+const PhoneText = styled.div`
+  position: absolute;
+  width: 55px;
+  height: 23px;
+  left: 510px;
+  top: 599px;
 
-  /* '성별' 텍스트 부분에 대한 css */
-  .gendertext {
-    flex-basis: 25%;
-  }
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
+`;
 
-  /* 선택지를 포함하고 있는 전체 박스에 대한 css */
-  .radio {
-    flex-basis: 55%;
-    display: flex;
-    justify-content: space-between;
-  }
+// 휴대폰 번호 입력 부분
+const InputPhone = styled.input`
+  box-sizing: border-box;
+
+  position: absolute;
+  width: 256px;
+  height: 43px;
+  left: 630px;
+  top: 589px;
+  text-align: center;
+
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 3px;
+`;
+
+// 휴대폰 번호 인증번호 버튼
+const CheckPhone = styled.button`
+  box-sizing: border-box;
+
+  position: absolute;
+  width: 102px;
+  height: 43px;
+  left: 902px;
+  top: 589px;
+  text-align: center;
+
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+`;
+
+// '성별' 텍스트 부분
+const GenderText = styled.div`
+  position: absolute;
+  width: 35px;
+  height: 23px;
+  left: 510px;
+  top: 658px;
+
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
+`;
+
+// '생년월일' 텍스트 부분
+const BirthText = styled.div`
+  position: absolute;
+  width: 65px;
+  height: 23px;
+  left: 510px;
+  top: 707px;
+
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
 `;
 
 // 생년월일 입력 부분
-const InputBirth = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  padding-right: 165px;
+const InputBirth = styled.input`
+  box-sizing: border-box;
 
-  /* input 태그에 대한 css */
-  .inputBirth {
-    width: 256px;
-    height: 43px;
-    border: 1px solid rgba(0, 0, 0, 0.5);
-    border-radius: 3px;
-    text-align: center;
-    margin-left: 18px;
-  }
+  position: absolute;
+  width: 256px;
+  height: 43px;
+  left: 630px;
+  top: 697px;
+  text-align: center;
+
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 3px;
 `;
 
-// 가입하기 버튼 부분
-const JoinButton = styled.div`
+// 가입하기 버튼
+const JoinButton = styled.button`
+  position: absolute;
   width: 190px;
   height: 43px;
+  left: 661px;
+  top: 793px;
+  text-align: center;
+  margin-bottom: 50px;
 
   background: #073255;
   border-radius: 3px;
-
   color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
 `;
 
-// 상단바 밑에 부분 컴포넌트
 const MakeId = () => {
   return (
     <>
       {/* 전체 박스 */}
       <Container>
-        {/* '회원가입' 텍스트 부분 */}
+        {/* 회원가입 텍스트 */}
         <SignInText>회원가입</SignInText>
-        {/* 회원정보 입력부분 박스 */}
-        <MiddleContainer>
-          {/* '* 필수 입력사항' 텍스트 */}
-          <SmallNotice>
-            <span style={{ color: "red" }}>*</span> 필수 입력사항
-          </SmallNotice>
-          <hr></hr>
-          {/* 아이디 입력 부분 */}
-          <InputId>
-            <div>
-              아이디<span style={{ color: "red" }}>*</span>
-            </div>
+        {/* 필수 입력사항 텍스트 */}
+        <SmallNotice>
+          <span style={{ color: "rgba(253, 9, 9, 0.5)" }}>*</span> 필수 입력사항
+        </SmallNotice>
+        <hr className="firsthr"></hr>
+        {/* 아이디 입력 부분 */}
+        <IdText>
+          아이디<span style={{ color: "rgba(253, 9, 9, 0.5)" }}>*</span>
+        </IdText>
+        <InputId
+          type={"text"}
+          placeholder={"6자 이상의 영문과 숫자를 조합"}
+        ></InputId>
+        <IdCheck>중복확인</IdCheck>
+        {/* 비밀번호 입력 부분 */}
+        <PwdText>
+          비밀번호<span style={{ color: "rgba(253, 9, 9, 0.5)" }}>*</span>
+        </PwdText>
+        <InputPwd
+          type={"password"}
+          placeholder={"비밀번호를 입력해주세요"}
+        ></InputPwd>
+        {/* 비밀번호 확인 입력 부분 */}
+        <CheckPwdText>
+          비밀번호 확인<span style={{ color: "rgba(253, 9, 9, 0.5)" }}>*</span>
+        </CheckPwdText>
+        <InputCheckPwd
+          type={"password"}
+          placeholder={"비밀번호를 한번 더 입력해주세요"}
+        ></InputCheckPwd>
+        {/* 이름 입력 부분 */}
+        <NameText>
+          이름<span style={{ color: "rgba(253, 9, 9, 0.5)" }}>*</span>
+        </NameText>
+        <InputName
+          type={"text"}
+          placeholder={"이름을 입력해주세요"}
+        ></InputName>
+        {/* 이메일 입력 부분 */}
+        <EmailText>
+          이메일<span style={{ color: "rgba(253, 9, 9, 0.5)" }}>*</span>
+        </EmailText>
+        <InputEmail
+          type={"text"}
+          placeholder={"예 : assemble@liklion.org"}
+        ></InputEmail>
+        <CheckEmail>중복확인</CheckEmail>
+        {/* 휴대폰 번호 입력 부분 */}
+        <PhoneText>
+          휴대폰<span style={{ color: "rgba(253, 9, 9, 0.5)" }}>*</span>
+        </PhoneText>
+        <InputPhone
+          type={"text"}
+          placeholder={"숫자만 입력해주세요"}
+        ></InputPhone>
+        <CheckPhone>인증번호 받기</CheckPhone>
+        {/* 성별 선택 부분 */}
+        <GenderText>성별</GenderText>
+        <div class="radio">
+          <div class="manRadio">
+            <input type="radio" id="man" name="gender" value="man"></input>
+            <label for="man">남자</label>
+          </div>
+          <div class="womanRadio">
+            <input type="radio" id="woman" name="gender" value="woman"></input>
+            <label for="woman">여자</label>
+          </div>
+          <div class="nothingRadio">
             <input
-              class="inputId"
-              type={"text"}
-              placeholder={"6자 이상의 영문과 숫자를 조합"}
+              type="radio"
+              id="nothing"
+              name="gender"
+              value="nothing"
             ></input>
-            <button class="checkId">중복확인</button>
-          </InputId>
-          {/* 비밀번호 입력 부분 */}
-          <InputPwd>
-            <div>
-              비밀번호<span style={{ color: "red" }}>*</span>
-            </div>
-            <input
-              class="inputPwd"
-              type={"password"}
-              placeholder={"비밀번호를 입력해주세요"}
-            ></input>
-          </InputPwd>
-          {/* 비밀번호 확인 입력 부분 */}
-          <CheckPwd>
-            <div>
-              비밀번호 확인<span style={{ color: "red" }}>*</span>
-            </div>
-            <input
-              class="inputPwd"
-              type={"text"}
-              placeholder={"비밀번호를 한번 더 입력해주세요"}
-            ></input>
-          </CheckPwd>
-          {/* 이름 입력 부분 */}
-          <InputName>
-            <div>
-              이름<span style={{ color: "red" }}>*</span>
-            </div>
-            <input
-              class="inputName"
-              type={"text"}
-              placeholder={"이름을 입력해주세요"}
-            ></input>
-          </InputName>
-          {/* 이메일 입력 부분 */}
-          <InputEmail>
-            <div>
-              이메일<span style={{ color: "red" }}>*</span>
-            </div>
-            <input
-              class="inputEmail"
-              type={"text"}
-              placeholder={"예 : assemble@liklion.org"}
-            ></input>
-            <button class="checkEmail">중복확인</button>
-          </InputEmail>
-          {/* 휴대폰 번호 입력 부분 */}
-          <InputPhone>
-            <div>
-              휴대폰<span style={{ color: "red" }}>*</span>
-            </div>
-            <input
-              class="inputPhone"
-              type={"text"}
-              placeholder={"숫자만 입력해주세요"}
-            ></input>
-            <button class="checkPhone">인증번호 받기</button>
-          </InputPhone>
-          {/* 성별 선택 부분 */}
-          <InputGender>
-            <div class="gendertext">성별</div>
-            <div class="radio">
-              <div>
-                <input type="radio" id="man" name="gender" value="man"></input>
-                <label for="man">남자</label>
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  id="woman"
-                  name="gender"
-                  value="woman"
-                ></input>
-                <label for="woman">여자</label>
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  id="nothing"
-                  name="gender"
-                  value="nothing"
-                ></input>
-                <label for="nothing">선택안함</label>
-              </div>
-            </div>
-          </InputGender>
-          {/* 생년월일 입력 부분 */}
-          <InputBirth>
-            <div>생년월일</div>
-            <input
-              class="inputBirth"
-              type={"text"}
-              placeholder={"YYYY       /       MM       /       DD"}
-            ></input>
-          </InputBirth>
-          <hr></hr>
-        </MiddleContainer>
+            <label for="nothing">선택안함</label>
+          </div>
+        </div>
+        {/* 생년월일 입력 부분 */}
+        <BirthText>생년월일</BirthText>
+        <InputBirth
+          type={"text"}
+          placeholder={"YYYY       /       MM       /       DD"}
+        ></InputBirth>
+        <hr className="secondhr"></hr>
         {/* 가입하기 버튼 */}
         <JoinButton>가입하기</JoinButton>
       </Container>

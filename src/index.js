@@ -4,18 +4,10 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-<<<<<<< HEAD
-=======
-
->>>>>>> upstream/master
 root.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>
 );
 
-<<<<<<< HEAD
 reportWebVitals();
-=======
-reportWebVitals();
->>>>>>> upstream/master

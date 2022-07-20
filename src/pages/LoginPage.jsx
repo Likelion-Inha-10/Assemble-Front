@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../component/Header";
-import LogIn from "../component/LogIn/Login";
+import LogIn from "../component/LogIn/LogIn"
 
 // 로그인 페이지
 const LoginPage = () => {

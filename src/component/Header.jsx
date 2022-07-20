@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 // 상단바 전체 박스
 const Bar = styled.div`
@@ -20,10 +21,17 @@ const Logo = styled.img`
 
 // 상단바 컴포넌트
 const Header = () => {
+
+  const navigate = useNavigate();
+
+  const goToHome = () => {
+    navigate("/");
+  }
+
   return (
     <div>
       <Bar>
-        <Logo src={"/img/logo.png"} alt="ASSEMBLE" />
+        <Logo onClick={goToHome} src={"/img/logo.png"} alt="ASSEMBLE" />
       </Bar>
     </div>
   );

@@ -11,6 +11,7 @@ function App() {
         {/* 회원가입 페이지 / 페이지로 연결해야되서 일단은 SignIn 페이지를 화면에 확인하기 위해 Firstpage 주석처리 함 */}
         <Route path="/signin" element={<SignIn/>}/>
         { /* <SignIn /> */ }
+        {/* <LoginPage /> 로그인 페이지 route 필요함*/}
       </Routes>
     </BrowserRouter>
   );

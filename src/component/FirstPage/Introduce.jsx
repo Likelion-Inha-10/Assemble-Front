@@ -27,7 +27,7 @@ const BackImageBox = styled.div`
 const BackImage = styled.img`
   width: 700px;
   height: 650px;
-  padding-bottom: 100px;
+  padding-bottom: 150px;
 `;
 
 // 텍스트 부분 전체 감싸는 박스

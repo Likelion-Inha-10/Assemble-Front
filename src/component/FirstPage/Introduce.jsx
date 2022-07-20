@@ -129,6 +129,10 @@ const Introduce = () => {
     navigate("/SignIn");
   }
 
+  const goToLogIn = () => {
+    navigate("/LogIn");
+  }
+
   return (
     <>
       <Background>
@@ -143,7 +147,7 @@ const Introduce = () => {
             ASSEMBLE 을 시작하세요
           </SmallText>
           <SignIn onClick={goToSign}>회원가입</SignIn>
-          <Login>로그인</Login>
+          <Login onClick={goToLogIn}>로그인</Login>
         </TextBox>
         <BackImageBox>
           <BackImage src={"/img/background.png"}></BackImage>

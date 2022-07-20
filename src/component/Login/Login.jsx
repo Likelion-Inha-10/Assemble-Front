@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 // Header 밑 공간
 const Container = styled.div`
@@ -134,6 +135,12 @@ const SignInButton = styled.div`
 // Header 밑 컴포넌트
 
 const LogIn = () => {
+  const navigate = useNavigate();
+
+  const goToSign = () => {
+    navigate("/SignIn");
+  }
+
   return (
     <>
       {/* 전체 박스 */}
@@ -164,7 +171,7 @@ const LogIn = () => {
             <FindPw>비밀번호 찾기</FindPw>
           </FindContainer>
           <LoginButton>로그인</LoginButton>
-          <SignInButton>회원가입</SignInButton>
+          <SignInButton onClick={goToSign}>회원가입</SignInButton>
         </MiddleContainer>
       </Container>
     </>

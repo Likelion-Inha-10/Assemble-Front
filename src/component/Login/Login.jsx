@@ -18,6 +18,9 @@ const Container = styled.div`
 const LogInText = styled.div`
   font-size: 24px;
   font-weight: 700;
+
+  font-family: "Noto Sans KR";
+  font-style: normal;
 `;
 
 // 박스들을 포함하고 있는 박스
@@ -82,18 +85,27 @@ const FindContainer = styled.div`
 const FindId = styled.div`
   font-size: 12px;
   font-weight: 400;
+
+  font-family: "Noto Sans KR";
+  font-style: normal;
 `;
 
 // 아이디 찾기와 비밀번호 찾기 사이의 bar ' | ' 텍스트
 const SmallBar = styled.div`
   font-size: 12px;
   font-weight: 400;
+
+  font-family: "Noto Sans KR";
+  font-style: normal;
 `;
 
 // '비밀번호 찾기' 텍스트
 const FindPw = styled.div`
   font-size: 12px;
   font-weight: 400;
+
+  font-family: "Noto Sans KR";
+  font-style: normal;
 `;
 
 // 파란색 로그인 버튼

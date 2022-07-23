@@ -130,7 +130,7 @@ const TextContainer = styled.div`
 `;
 
 // 프로젝트 이름 텍스트
-const FileName =styled.div`
+const ProjectName =styled.div`
   height: 35px;
 
   font-family: "Noto Sans KR";
@@ -239,8 +239,152 @@ const VersionBox = styled.div`
 
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
+// 버전 몇인지 표시하는 텍스트와 업로드 버튼 Container
+const SmallContainer = styled.div`
+  width: 950px;
+  height: 45px;
+
+  margin-top: 20px;
+
+  display: flex;
+  justify-content: space-between;
+`;
+
+// 버전 몇인지 표시하는 텍스트
+const VersionNum = styled.div`
+  font-size: 20px;
+  font-weight: 700;
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  color: #706363;
+
+  margin-top: 10px;
+  margin-left: 21px;
+`;
+
+// 파란색 업로드 버튼
+const UploadButton =styled.img`
+  width: 46px;
+  height: 46px;
+`;
+
+// 파일들을 담을 Container
+const FileContainer = styled.div`
+  width: 968px;
+
+  margin-top: 34px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+// 올라가있는 파일 박스
+const File = styled.div`
+  width: 908px;
+  height: 90px;
+
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: space-between;
+  justify-content: center;
+`;
+
+// 파일명
+const FileName = styled.div`
+  width: 600px;
+
+  font-size: 16px;
+  font-weight: 700;
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;
+
+// 파일명 밑에 comment
+const Comment = styled.div`
+  width: 600px; 
+  
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  color: #075995;
+
+  margin-top: 7px;
+  
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;
+
+// 파일명 옆에 있는 committer
+const SmallCommitter = styled.div`
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+
+  margin-right: 50px;
+`;
+
+// 작은 커밋 날짜
+const SmallCommitDay = styled.div`
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+
+  marign-right : 20px;
+`;
+
+
+// 작은 커밋한 시간
+const SmallCommitTime = styled.div`
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+`;
+
+// 파일명이랑 comment 를 담는 컨테이너
+const TinyContainer = styled.div`
+  margin-right: auto;
+  margin-left: 44px;
+  margin-top: 27px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+`;
+
+// 커밋 시간정보 컨테이너
+const TinyCommitTimeContainer = styled.div`
+  display: flex;
+`;
+
+// 커밋 committer 와 커밋 시간정보 컨테이너를 담는 컨테이너
+const TinyCommitInfoContainer = styled.div`
+  
+  margin-left: auto;
+  margin-right: 40px;
+  display: flex;
+  align-items: center;
+
+`;
 
 
 
@@ -261,7 +405,7 @@ const VerTool = () => {
           <ProjectText>프로젝트</ProjectText>
         </TextContainer>
         <FileInfoBox>
-          <FileName>어셈블</FileName>
+          <ProjectName>어셈블</ProjectName>
           <CommitBox>
             <Committer>이성</Committer>
             <CommitTime>오늘</CommitTime>
@@ -273,8 +417,32 @@ const VerTool = () => {
       <VersionText>Version</VersionText>
     </TextContainer>
     <MainContainer>
-      <BranchBox />
-      <VersionBox />
+      <BranchBox></BranchBox>
+      <VersionBox>
+        <SmallContainer>
+          <VersionNum>version 1.1.1</VersionNum>
+          <UploadButton src={"/img/UploadButton.png"} />
+        </SmallContainer>
+        <FileContainer>
+         <File>
+          <TinyContainer>
+              <FileName>파일이름파일이름파일이름파일이름파일이름파일이름파일이름파일이름파일이름파일이름파일이름파일이름파일이름</FileName>
+              <Comment>commentcommentcommentcommentcommentcommentcommentcommentcommentcommentcommentcommentcomment</Comment>
+            </TinyContainer>
+            <SmallContainer>
+              <TinyCommitInfoContainer>
+                <SmallCommitter>소리성</SmallCommitter>
+                <TinyCommitTimeContainer>
+                  <SmallCommitDay>어제</SmallCommitDay>
+                  <SmallCommitTime>오후 3시</SmallCommitTime>
+                </TinyCommitTimeContainer>
+              </TinyCommitInfoContainer>
+            </SmallContainer>
+         </File>
+         <File />
+         <File />
+        </FileContainer>
+      </VersionBox>
     </MainContainer>
   </MiddleContainer> 
     </div>

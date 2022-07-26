@@ -3,6 +3,7 @@ import SignIn from "./pages/SignIn";
 import LogIn from "./pages/LogIn";
 import UserPage from "./pages/UserPage";
 import MakeProject from "./pages/MakeProject";
+import VersionToolPage from "./pages/VersionToolPage";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 function App() {
@@ -19,6 +20,8 @@ function App() {
         <Route path="/userpage" element={<UserPage />} />
         {/* 프로젝트 생성 페이지 */}
         <Route path="/makeproject" element={<MakeProject />} />
+        {/* 버전 툴 페이지 */}
+        <Route path="/vertool" element={<VersionToolPage />} />
       </Routes>
     </BrowserRouter>
   );

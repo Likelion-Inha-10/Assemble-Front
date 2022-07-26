@@ -186,7 +186,7 @@ const NewProject = () => {
       <Container>
         <TopText>새로운 팀 페이지 생성</TopText>
         <NoticeText>
-          <span style={{ color: "rgba(253, 9, 9, 0.5)" }}>*</span>필수 입력사항
+          <span style={{ color: "rgba(253, 9, 9, 0.5)" }}>*</span> 필수 입력사항
         </NoticeText>
         <hr></hr>
         <Box>

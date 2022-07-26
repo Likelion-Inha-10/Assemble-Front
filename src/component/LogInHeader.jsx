@@ -15,7 +15,7 @@ const Logo = styled.img`
   width: 227px;
   height: 69px;
   left: 145px;
-  top: 18px;
+  top: 19px;
 `;
 
 // 상단바 환영 문구
@@ -35,37 +35,37 @@ const Content = styled.div`
 // 알람 기능1
 const Alarm1 = styled.img`
   position: absolute;
-  width: 29px;
-  height: 26px;
-  left: 1281px;
-  top: 36px;
+  width: 25px;
+  height: 23px;
+  left: 1290px;
+  top: 38px;
 `;
 
 // 알람 기능2
 const Alarm2 = styled.img`
   position: absolute;
   width: 8px;
-  height: 9px;
-  left: 1280px;
-  top: 34px;
+  height: 8px;
+  left: 1289px;
+  top: 35px;
 `;
 
 // 알람 기능3
 const Alarm3 = styled.img`
   position: absolute;
   width: 12px;
-  height: 4px;
-  left: 1289px;
-  top: 65px;
+  height: 3px;
+  left: 1297px;
+  top: 63px;
 `;
 
 // 프로필 기능
 const Profile = styled.img`
   position: absolute;
-  width: 68px;
-  height: 68px;
+  width: 50px;
+  height: 50px;
   left: 1372px;
-  top: 18px;
+  top: 26px;
 `;
 
 

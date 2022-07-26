@@ -68,6 +68,7 @@ const Project = styled.div`
   padding-top: 20px;
 `;
 
+// 프로젝트 팀 이미지
 const ProjectImage = styled.div`
   background-image: url("img/plusproject.png");
   background-size: cover;
@@ -86,6 +87,7 @@ const ProjectImage = styled.div`
   }
 `;
 
+// 프로젝트 이름
 const ProjectName = styled.div`
   width: 200px;
   height: 26px;
@@ -131,7 +133,7 @@ const NoticeText = styled.div`
 `;
 
 const ProjectSelect = () => {
-  const [modify, setModify] = useState(false);
+  const [modify, setModify] = useState(false); // 편집 버튼 클릭 시 변경을 위한 변수
 
   const onClickModify = () => {
     setModify(!modify);
@@ -141,12 +143,14 @@ const ProjectSelect = () => {
     <>
       <Container>
         <TeamPageText>팀 페이지</TeamPageText>
+        {/* modify가 참이면 저장 버튼으로 변경, modify가 거짓이면 편집 버튼이 나타남 */}
         <ModifyText onClick={onClickModify}>
           {modify ? "저장" : "편집"}
         </ModifyText>
         <ProjectBox>
           <Project>
             <ProjectImage>
+              {/* 편집 버튼 클릭 시 (modify=true) 각 프로젝트 사진에 '-' 아이콘 나타남 */}
               {modify ? <AiOutlineMinusCircle id="minusIcon" /> : ""}
             </ProjectImage>
             <ProjectName>임시 테스트 이름</ProjectName>

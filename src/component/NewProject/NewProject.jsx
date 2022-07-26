@@ -171,8 +171,8 @@ const MakeButton = styled.button`
 `;
 
 const NewProject = () => {
-  const [name, setName] = useState("");
-  const [intro, setIntro] = useState("");
+  const [name, setName] = useState(""); // 이름
+  const [intro, setIntro] = useState(""); // 팀 설명
 
   const onChangeName = (e) => {
     setName(e.target.value);

@@ -2,6 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import { useState } from "react";
 
+// 수정 필요 (페이지 연결 식으로 하는 방법도 고려중)
+
+// 전체 박스
 const Container = styled.div`
   width: 280px;
   height: 160px;
@@ -20,6 +23,7 @@ const Container = styled.div`
   margin-bottom: 20px;
 `;
 
+// 파란색 상단 + x 버튼
 const TopBox = styled.div`
   width: 280px;
   height: 33px;
@@ -28,6 +32,7 @@ const TopBox = styled.div`
   align-items: center;
 `;
 
+// 파란 상단
 const Top = styled.div`
   width: 280px;
   height: 33px;
@@ -37,6 +42,7 @@ const Top = styled.div`
   z-index: 100;
 `;
 
+// x 버튼
 const XButton = styled.button`
   height: 33px;
   z-index: 200;
@@ -46,6 +52,7 @@ const XButton = styled.button`
   padding-right: 15px;
 `;
 
+// 일정 적는 부분
 const Input = styled.input`
   width: 200px;
   height: 30px;
@@ -64,6 +71,7 @@ const Input = styled.input`
   margin-top: 20px;
 `;
 
+// 취소 & 저장 버튼 박스
 const ButtonBox = styled.div`
   padding-top: 20px;
   width: 100%;
@@ -71,6 +79,7 @@ const ButtonBox = styled.div`
   padding-right: 40px;
 `;
 
+// 취소 버튼
 const CancelButton = styled.button`
   width: 65px;
   height: 35px;
@@ -91,6 +100,7 @@ const CancelButton = styled.button`
   padding-bottom: 10px;
 `;
 
+// 저장 버튼
 const SaveButton = styled.button`
   padding: 5px 15px;
   gap: 10px;

@@ -147,11 +147,11 @@ const IconBox = styled.div`
 `;
 
 const TodoList = () => {
-  const [updown, setUpDown] = useState(false);
-  const [modify, setModify] = useState(false);
+  const [updown, setUpDown] = useState(false); // 완료 목록에서 화살표 클릭 시 행동을 위한 변수
+  const [modify, setModify] = useState(false); // 편집 버튼 클릭 시 해동을 위한 변수
   // 투두리스트 목록 생성하는거 어떻게 할지 결정 필요
-  const [make, setMake] = useState(false);
-  const [star, setStar] = useState(false);
+  const [make, setMake] = useState(false); // todo 목록 생성 시 필요한 변수
+  const [star, setStar] = useState(false); // 별표 클릭 시 행동을 위한 변수
 
   const onClickUpDown = () => {
     setUpDown(!updown);
@@ -173,21 +173,25 @@ const TodoList = () => {
     <>
       <Container>
         <ListText>To Do List</ListText>
+        {/* modify true면 저장 / false면 편집 */}
         <ModifyText onClick={onClickModify}>
           {modify ? "저장" : "편집"}
         </ModifyText>
         <ListBox>
           <ProgBox>
             <Text>진행중인 Task</Text>
+            {/* modify가 true면 plus 아이콘 나타남 -> todo 리스트 추가를 위한 버튼 */}
             {modify ? (
               <AiFillPlusCircle id="plusIcon" onClick={onClickMake} />
             ) : (
               ""
             )}
           </ProgBox>
+          {/* 플러스 버튼 클릭 시 todo 리스트 작성란이 나오도록 설정했지만 수정 필요 (페이지 이동 식으로 할까도 생각중) */}
           {make ? <MakeToDo id="maketodo" /> : ""}
           <ProgressBox>
             <TaskBox>
+              {/* modify가 참이면 '-'버튼 나타남 */}
               {modify ? (
                 <AiOutlineMinusCircle style={{ width: "30px", color: "red" }} />
               ) : (
@@ -195,6 +199,7 @@ const TodoList = () => {
               )}
               <TaskContent>임시 테스트</TaskContent>
               <IconBox>
+                {/* star이 참이면 색이 칠해진 별표로 변경됨 */}
                 {star ? (
                   <AiTwotoneStar
                     style={{ color: "#075995" }}
@@ -209,6 +214,7 @@ const TodoList = () => {
           </ProgressBox>
           <ComTextBox>
             <Text style={{ width: "110px" }}>완료된 Task</Text>
+            {/* updown이 참이면 위쪽 삼각형 / 거짓이면 아래쪽 삼각형 나타남 */}
             {updown ? (
               <GoTriangleUp
                 style={{ paddingTop: "8px" }}
@@ -222,6 +228,7 @@ const TodoList = () => {
             )}
           </ComTextBox>
           <CompleteBox>
+            {/* updown이 true면 완료된 task 목록 나타남 */}
             {updown ? (
               <TaskBox>
                 {modify ? (

@@ -139,11 +139,11 @@ const LogIn = () => {
 
   const goToSign = () => {
     navigate("/SignIn");
-  }
+  };
 
   const goToMypage = () => {
-    navigate("/calendar");
-  }
+    navigate("/userpage");
+  };
 
   return (
     <>

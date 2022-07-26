@@ -1,7 +1,8 @@
 import FirstPage from "./pages/FristPage";
 import SignIn from "./pages/SignIn";
 import LogIn from "./pages/LogIn";
-import MyPage from "./pages/MyPage";
+import UserPage from "./pages/UserPage";
+import MakeProject from "./pages/MakeProject";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 function App() {
@@ -14,10 +15,12 @@ function App() {
         <Route path="/signin" element={<SignIn />} />
         {/* <LogIn /> */}
         <Route path="/login" element={<LogIn />} />
-        {/* <Calender /> */}
-        <Route path="/calendar" element={<MyPage />} />
+        {/* 유저 메인페이지 */}
+        <Route path="/userpage" element={<UserPage />} />
+        {/* 프로젝트 생성 페이지 */}
+        <Route path="/makeproject" element={<MakeProject />} />
       </Routes>
-    </BrowserRouter> 
+    </BrowserRouter>
   );
 }
 

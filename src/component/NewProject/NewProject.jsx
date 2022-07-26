@@ -14,6 +14,7 @@ import {
   HouseLine,
 } from "phosphor-react";
 
+// 전체 박스
 const Container = styled.div`
   width: 100%;
   height: 100vh;
@@ -30,6 +31,7 @@ const Container = styled.div`
   }
 `;
 
+// '새로운 팀 페이지 생성' 텍스트
 const TopText = styled.div`
   width: 424px;
   height: 29px;
@@ -44,6 +46,7 @@ const TopText = styled.div`
   padding-bottom: 50px;
 `;
 
+// '* 필수 입력사항' 텍스트
 const NoticeText = styled.div`
   width: 424px;
   height: 15px;
@@ -57,6 +60,7 @@ const NoticeText = styled.div`
   line-height: 15px;
 `;
 
+// 각각의 입력 박스 (ex)팀이름 + 이름 입력란)
 const Box = styled.div`
   width: 424px;
   display: flex;
@@ -64,6 +68,7 @@ const Box = styled.div`
   padding-top: 20px;
 `;
 
+// 입력할 사항 텍스트
 const Text = styled.div`
   width: 100px;
   height: 20px;
@@ -75,6 +80,7 @@ const Text = styled.div`
   line-height: 20px;
 `;
 
+// 입력 부분
 const Input = styled.input`
   box-sizing: border-box;
 
@@ -96,6 +102,7 @@ const Input = styled.input`
   color: rgba(10, 10, 10, 0.5);
 `;
 
+// 프로젝트 아이콘 전체 박스
 const SumnailBox = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -111,6 +118,7 @@ const SumnailBox = styled.div`
   box-shadow: 0px 0.874251px 0.874251px rgba(0, 0, 0, 0.25);
   border-radius: 2.18563px;
 
+  /* 각 아이콘 css */
   .sumnailIcon {
     color: #075995;
     box-shadow: 0px 3px 3px lightgray;
@@ -118,6 +126,7 @@ const SumnailBox = styled.div`
   }
 `;
 
+// 팀원 아이디 추가되는 큰 박스
 const TextArea = styled.textarea`
   box-sizing: border-box;
   resize: none;
@@ -141,6 +150,7 @@ const TextArea = styled.textarea`
   color: rgba(10, 10, 10, 0.5);
 `;
 
+// 추가할 팀원의 아이디 입력하는 부분
 const IdsBox = styled.div`
   box-sizing: border-box;
 
@@ -171,8 +181,8 @@ const MakeButton = styled.button`
 `;
 
 const NewProject = () => {
-  const [name, setName] = useState("");
-  const [intro, setIntro] = useState("");
+  const [name, setName] = useState(""); // 이름
+  const [intro, setIntro] = useState(""); // 팀 설명
 
   const onChangeName = (e) => {
     setName(e.target.value);
@@ -186,7 +196,7 @@ const NewProject = () => {
       <Container>
         <TopText>새로운 팀 페이지 생성</TopText>
         <NoticeText>
-          <span style={{ color: "rgba(253, 9, 9, 0.5)" }}>*</span>필수 입력사항
+          <span style={{ color: "rgba(253, 9, 9, 0.5)" }}>*</span> 필수 입력사항
         </NoticeText>
         <hr></hr>
         <Box>

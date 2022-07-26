@@ -1,7 +1,7 @@
-import React from 'react';
+import { React, useState } from 'react';
 import styled from 'styled-components';
-
-
+import {AiFillCaretUp} from "react-icons/ai";
+import { AiFillCaretDown } from "react-icons/ai";
 // 팀 페이지 프사 있는 박스
 const TeamInfoContainer = styled.div`
   width: 100%;
@@ -35,6 +35,7 @@ const TeamPicBox =styled.div`
 
     border: 1px solid #706363;
   }
+
 `;
 
 // 팀 이름 텍스트
@@ -55,7 +56,7 @@ const MiddleContainer = styled.div`
 `;
 
 // 내비게이션 박스
-const NavBox = styled.div`
+const NavBar = styled.div`
   width: 1464px;
   height: 52px;
 
@@ -63,9 +64,14 @@ const NavBox = styled.div`
   border-radius: 10px;
 
   padding-left: 140px;
-
   margin-top: 6px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
+
+
 
 // '목록' 버튼 넣을 컨테이너
 const ListButtonContainer = styled.div`
@@ -221,18 +227,7 @@ const MainContainer =styled.div`
 
 `;
 
-// 브랜치 박스
-const BranchBox = styled.div`
-  width: 224px;
-  height: 685px;
-
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
-
-  margin-right: 19px;
-`;
-
-// 버전 박스
+// *******************************************************버전 박스*********************************************************
 const VersionBox = styled.div`
   width: 968px;
   height: 685px;
@@ -385,19 +380,88 @@ const TinyCommitInfoContainer = styled.div`
   align-items: center;
 
 `;
+// ******************************************************브랜치 박스*********************************************************
+
+// 브랜치 박스
+const BranchBox = styled.div`
+  width: 224px;
+  height: 685px;
+
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+
+  margin-right: 19px;
+`;
+
+// 플러스 버튼
+const Plus = styled.div`
+  width: 20px;
+  height: 20px;
+
+  background-image: url('/img/PlusButton.png');
+  background-size: cover;
+`;
+
+// 플러스 버튼을 왼쪽에 위치시키기 위한 컨테이너
+const PlusContainer = styled.div`
+  height: 22px;
+
+  display: flex;
+  justify-content: right;
+
+  margin-top: 22px;
+  margin-right: 24px;
+`;
+
+// 버전들 담는 컨테이너
+const SubContainer = styled.div`
+  width: 224px;
+
+  padding-right: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+`;
+
+// 버전
+const Version = styled.div`
+  height: 26px;
+  font-size: 18px;
+  font-weight: 400px;
+
+  /* 커서 올렸을 때 색깔 바뀌게 만들기 */
+  &:hover {
+    background-color: #f0f8ff;
+    cursor: pointer;
+    border-right: solid 5px #075995;
+  }
+`;
+
 
 
 
 const VerTool = () => {
+
+  const [Open, setOpen] = useState(false);
+
+  const makeOpen = () =>{
+    console.log("눌림");
+    setOpen(Open => !Open);
+  }
+
   return (
     <div>
-  <TeamInfoContainer>
+      <TeamInfoContainer>
         <TeamPicBox />
         <TeamName>팀 이름이 들어갈 겁니다.</TeamName>
       </TeamInfoContainer>
       <hr className='tophr'></hr>
       <MiddleContainer>
-        <NavBox />
+        <NavBar>
+
+        </NavBar>
         <ListButtonContainer>
           <ListButton>목록</ListButton>
         </ListButtonContainer>
@@ -417,7 +481,24 @@ const VerTool = () => {
       <VersionText>Version</VersionText>
     </TextContainer>
     <MainContainer>
-      <BranchBox></BranchBox>
+      {/* 브랜치 박스 */}
+      <BranchBox>
+      <PlusContainer><Plus /></PlusContainer>
+      <SubContainer>
+        <Version style={{marginLeft:'19px', color:'#075995'}} onClick={makeOpen}>version <AiFillCaretUp /></Version>
+        <Version style={{marginLeft:'50px', color:'#075995'}}>version 1 <AiFillCaretUp /></Version>
+        <Version style={{marginLeft:'81px', color:'#706363'}}>version 1.1<AiFillCaretDown /></Version>
+        <Version style={{marginLeft:'81px', color:'#075995'}}>version 1.2 <AiFillCaretUp /></Version>
+        <Version style={{marginLeft:'112px', color:'#706363'}}>version 1.2.1</Version>
+        <Version style={{marginLeft:'112px', color:'#075995'}}>version 1.2.2</Version>
+        <Version style={{marginLeft:'112px', color:'#706363'}}>version 1.2.3</Version>
+        <Version style={{marginLeft:'81px', color:'#706363'}}>version 1.3 <AiFillCaretDown /></Version>
+        <Version style={{marginLeft:'50px', color:'#706363'}}>version 2 <AiFillCaretDown /></Version>
+        <Version style={{marginLeft:'50px', color:'#706363'}}>version 3 <AiFillCaretDown /></Version>
+        
+      </SubContainer>
+      </BranchBox>
+      {/* 버전 박스 */}
       <VersionBox>
         <SmallContainer>
           <VersionNum>version 1.1.1</VersionNum>

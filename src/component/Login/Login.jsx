@@ -141,6 +141,10 @@ const LogIn = () => {
     navigate("/SignIn");
   }
 
+  const goToMypage = () => {
+    navigate("/calendar");
+  }
+
   return (
     <>
       {/* 전체 박스 */}
@@ -170,7 +174,7 @@ const LogIn = () => {
             <SmallBar>&nbsp;|&nbsp;</SmallBar>
             <FindPw>비밀번호 찾기</FindPw>
           </FindContainer>
-          <LoginButton>로그인</LoginButton>
+          <LoginButton onClick={goToMypage}>로그인</LoginButton>
           <SignInButton onClick={goToSign}>회원가입</SignInButton>
         </MiddleContainer>
       </Container>

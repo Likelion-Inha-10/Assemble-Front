@@ -1,6 +1,7 @@
 import FirstPage from "./pages/FristPage";
 import SignIn from "./pages/SignIn";
 import LogIn from "./pages/LogIn";
+import MyPage from "./pages/MyPage";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 function App() {
@@ -13,6 +14,8 @@ function App() {
         <Route path="/signin" element={<SignIn />} />
         {/* <LogIn /> */}
         <Route path="/login" element={<LogIn />} />
+        {/* <Calender /> */}
+        <Route path="/calendar" element={<MyPage />} />
       </Routes>
     </BrowserRouter> 
   );

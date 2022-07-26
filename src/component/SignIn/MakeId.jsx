@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 // 상단바 밑에 부분 전체를 포함하고 있는 박스
 const Container = styled.div`
@@ -138,6 +139,11 @@ const JoinButton = styled.div`
 `;
 
 const MakeId = () => {
+  const navigate = useNavigate();
+
+  const goToMain = () => {
+    navigate("/");
+  }
   return (
     <>
       <Container>
@@ -227,7 +233,7 @@ const MakeId = () => {
           ></Input>
         </Box>
         <hr></hr>
-        <JoinButton>가입하기</JoinButton>
+        <JoinButton onClick={goToMain}>가입하기</JoinButton>
       </Container>
     </>
   );

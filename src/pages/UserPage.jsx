@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Header from "../component/Header";
+import LogInHeader from "../component/LogInHeader";
 import ProjectSelect from "../component/UserPageComponent/ProjectSelect";
 import TodoList from "../component/UserPageComponent/TodoList";
 import Calender from "../component/UserPageComponent/Calender";
@@ -21,8 +21,10 @@ const Container = styled.div`
 const UserPage = () => {
   return (
     <>
-      {/* 상단바 */}
-      <Header></Header>
+      {/* 헤더 */}
+      {/* <Header></Header> */}
+      {/* 로그인 후 헤더 */}
+      <LogInHeader />
       <Container>
         {/* 프로젝트 선택 부분 */}
         <ProjectSelect></ProjectSelect>

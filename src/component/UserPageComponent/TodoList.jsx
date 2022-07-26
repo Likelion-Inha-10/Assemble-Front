@@ -47,7 +47,7 @@ const ModifyText = styled.div`
 // 진행중인 task랑 완료된 task를 담고 있는 박스
 const ListBox = styled.div`
   width: 310px;
-  height: 846px;
+  height: 826px;
 
   background: #ffffff;
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.25);
@@ -78,7 +78,7 @@ const ProgBox = styled.div`
 // 완료 task 전체 박스
 const CompleteBox = styled.div`
   width: 310px;
-  height: 400px;
+  height: 200px;
 
   overflow: auto;
 `;

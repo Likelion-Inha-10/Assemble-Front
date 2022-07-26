@@ -190,6 +190,7 @@ const MakeId = () => {
   const goToMain = () => {
     navigate("/");
   };
+
   return (
     <>
       <Container>

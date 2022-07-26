@@ -60,7 +60,7 @@ const BigText = styled.div`
 // 작은 글씨
 const SmallText = styled.div`
   position: absolute;
-  width: 434px;
+  width: 420px;
   height: 52px;
   left: 71px;
   top: 400px;
@@ -91,6 +91,7 @@ const SignIn = styled.div`
   height: 55px;
   left: 71px;
   top: 509px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
   border: 1px solid rgba(0, 0, 0, 0.6);
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));

@@ -16,7 +16,7 @@ const Logo = styled.img`
   width: 227px;
   height: 69px;
   left: 145px;
-  top: 12px;
+  top: 19px;
 `;
 
 // 상단바 컴포넌트

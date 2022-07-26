@@ -21,6 +21,7 @@ const Container = styled.div`
   }
 `;
 
+// '회원가입' 텍스트
 const SignInText = styled.div`
   width: 100px;
   height: 35px;
@@ -32,6 +33,7 @@ const SignInText = styled.div`
   margin-bottom: 30px;
 `;
 
+// '* 필수 입력사항' 텍스트
 const NoticeText = styled.div`
   width: 500px;
   height: 17px;
@@ -43,6 +45,8 @@ const NoticeText = styled.div`
   text-align: end;
 `;
 
+// 하나의 정보 입력 부분을 포함하고 있는 박스
+// ex) 아이디 & 아이디 입력 박스 & 중복확인
 const Box = styled.div`
   width: 500px;
 
@@ -52,6 +56,7 @@ const Box = styled.div`
   margin-top: 18px;
 `;
 
+// 작성할 부분 텍스트
 const Text = styled.div`
   width: 130px;
   height: 23px;
@@ -61,6 +66,7 @@ const Text = styled.div`
   line-height: 23px;
 `;
 
+// 정보 입력 부분
 const Input = styled.input`
   width: 256px;
   height: 43px;
@@ -73,6 +79,7 @@ const Input = styled.input`
   padding-left: 10px;
 `;
 
+// 중복 확인 버튼
 const DupButton = styled.button`
   width: 80px;
   height: 43px;
@@ -94,6 +101,7 @@ const DupButton = styled.button`
   margin-left: 20px;
 `;
 
+// 인증버튼
 const CertificButton = styled.button`
   width: 102px;
   height: 43px;
@@ -112,12 +120,14 @@ const CertificButton = styled.button`
   margin-left: 10px;
 `;
 
+// 성별 선택 박스
 const GenderBox = styled.div`
   width: 300px;
   display: flex;
   justify-content: space-between;
 `;
 
+// 가입하기 버튼
 const JoinButton = styled.div`
   width: 190px;
   height: 43px;

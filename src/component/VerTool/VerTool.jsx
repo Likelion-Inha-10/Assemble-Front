@@ -1,7 +1,8 @@
 import { React, useState } from 'react';
 import styled from 'styled-components';
 import {AiFillCaretUp} from "react-icons/ai";
-import { AiFillCaretDown } from "react-icons/ai";
+import { AiFillCaretDown, AiOutlineDoubleRight } from "react-icons/ai";
+
 // 팀 페이지 프사 있는 박스
 const TeamInfoContainer = styled.div`
   width: 100%;
@@ -25,8 +26,9 @@ const TeamPicBox =styled.div`
 
   margin: 0px 0px 28px 146px;
 
-  /* 팀 프사 어떻게 받을 지 몰라서 일단 색만 채워둠. */
-  background-color: blue;
+  background-image: url('/img/Desktop.png');
+  background-size: cover;
+  background-repeat: no-repeat;
 
   /* hr 태그 css */
   .tophr {
@@ -68,9 +70,16 @@ const NavBar = styled.div`
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
 `;
 
+// NavBar에 있는 링크버튼
+const NavLink = styled.div`
+  font-size: 16px;
+  font-weight: 700;
+  color:grey;
+
+  margin-right: 15px;
+`;
 
 
 // '목록' 버튼 넣을 컨테이너
@@ -297,7 +306,7 @@ const File = styled.div`
 
 // 파일명
 const FileName = styled.div`
-  width: 600px;
+  width: 500px;
 
   font-size: 16px;
   font-weight: 700;
@@ -311,7 +320,7 @@ const FileName = styled.div`
 
 // 파일명 밑에 comment
 const Comment = styled.div`
-  width: 600px; 
+  width: 500px; 
   
   font-size: 12px;
   font-weight: 400;
@@ -338,12 +347,12 @@ const SmallCommitter = styled.div`
 
 // 작은 커밋 날짜
 const SmallCommitDay = styled.div`
+  font-size: 12px;  
+  font-weight: 400;
   font-family: 'Noto Sans KR';
   font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
 
-  marign-right : 20px;
+  margin-right : 20px;
 `;
 
 
@@ -439,21 +448,42 @@ const Version = styled.div`
   }
 `;
 
+// 버전 넘버와 화살표 컨테이너
+const MicroContainer = styled.div`
+  display: flex;
+  align-items: center;
+  
+  /* 커서 올렸을 때 색깔 바뀌게 만들기 */
+  &:hover {
+    background-color: #f0f8ff;
+    cursor: pointer;
+    border-right: solid 5px #075995;
+  }
+`;
 
 
 
 const VerTool = () => {
 
+  const [updown, setUpdown] = useState(false);  // false일 때는 닫혀 있다가 true가 되면 하단에 열림.
+  const TriUPdown = () => {
+    setUpdown(updown => !updown);
+  }
+
   return (
     <div>
       <TeamInfoContainer>
         <TeamPicBox />
-        <TeamName>팀 이름이 들어갈 겁니다.</TeamName>
+        <TeamName>멋쟁이사자처럼 인하대학교 해커톤 이성팀</TeamName>
       </TeamInfoContainer>
       <hr className='tophr'></hr>
       <MiddleContainer>
         <NavBar>
-
+          <NavLink>마이페이지</NavLink>
+          <NavLink><AiOutlineDoubleRight /></NavLink>
+          <NavLink>멋쟁이사자처럼 인하대학교 해커톤 이성팀</NavLink>
+          <NavLink><AiOutlineDoubleRight /></NavLink>
+          <NavLink style={{color:'#075995'}}>프로젝트</NavLink>
         </NavBar>
         <ListButtonContainer>
           <ListButton>목록</ListButton>
@@ -462,13 +492,13 @@ const VerTool = () => {
           <ProjectText>프로젝트</ProjectText>
         </TextContainer>
         <FileInfoBox>
-          <ProjectName>어셈블</ProjectName>
+          <ProjectName>Assemble 기획 아이디어</ProjectName>
           <CommitBox>
-            <Committer>이성</Committer>
-            <CommitTime>오늘</CommitTime>
+            <Committer>한재필</Committer>
+            <CommitTime>2022-07-27 오후 4:58 </CommitTime>
           </CommitBox>
         </FileInfoBox>
-    <AboutFileBox>파일에 대한 설명이 들어갈 겁니다.</AboutFileBox>
+    <AboutFileBox>Assemble 디자인입니다. 배경이미지 제작 완료했습니다.</AboutFileBox>
     <TextContainer>
       <BranchText>Branch</BranchText>
       <VersionText>Version</VersionText>
@@ -478,43 +508,81 @@ const VerTool = () => {
       <BranchBox>
       <PlusContainer><Plus /></PlusContainer>
       <SubContainer>
-        <Version style={{marginLeft:'19px', color:'#075995'}}>version <AiFillCaretUp /></Version>
-        <Version style={{marginLeft:'50px', color:'#075995'}}>version 1 <AiFillCaretUp /></Version>
-        <Version style={{marginLeft:'81px', color:'#706363'}}>version 1.1<AiFillCaretDown /></Version>
-        <Version style={{marginLeft:'81px', color:'#075995'}}>version 1.2 <AiFillCaretUp /></Version>
-        <Version style={{marginLeft:'112px', color:'#706363'}}>version 1.2.1</Version>
-        <Version style={{marginLeft:'112px', color:'#075995'}}>version 1.2.2</Version>
-        <Version style={{marginLeft:'112px', color:'#706363'}}>version 1.2.3</Version>
-        <Version style={{marginLeft:'81px', color:'#706363'}}>version 1.3 <AiFillCaretDown /></Version>
-        <Version style={{marginLeft:'50px', color:'#706363'}}>version 2 <AiFillCaretDown /></Version>
-        <Version style={{marginLeft:'50px', color:'#706363'}}>version 3 <AiFillCaretDown /></Version>
+        <MicroContainer>
+        <Version style={{marginLeft:'19px', color:'#075995'}}>version</Version>
+        {updown ? 
+        (<AiFillCaretUp style={{color:'#075995'}} onClick={TriUPdown}></AiFillCaretUp>)
+        : (<AiFillCaretDown style={{color:'#706363'}} onClick={TriUPdown}></AiFillCaretDown>)
+        }
+        </MicroContainer>
+        {updown ? (
+          <>
+          <Version style={{marginLeft:'50px', color:'#075995'}}>version 1 <AiFillCaretUp /></Version>
+          <Version style={{marginLeft:'81px', color:'#706363'}}>version 1.1<AiFillCaretDown /></Version>
+          <Version style={{marginLeft:'81px', color:'#075995'}}>version 1.2 <AiFillCaretUp /></Version>
+          <Version style={{marginLeft:'112px', color:'#706363'}}>version 1.2.1</Version>
+          <Version style={{marginLeft:'112px', color:'#075995'}}>version 1.2.2</Version>
+          <Version style={{marginLeft:'112px', color:'#706363'}}>version 1.2.3</Version>
+          <Version style={{marginLeft:'81px', color:'#706363'}}>version 1.3 <AiFillCaretDown /></Version>
+          <Version style={{marginLeft:'50px', color:'#706363'}}>version 2 <AiFillCaretDown /></Version>
+          <Version style={{marginLeft:'50px', color:'#706363'}}>version 3 <AiFillCaretDown /></Version>
+          </>): ("")}
+        
         
       </SubContainer>
       </BranchBox>
       {/* 버전 박스 */}
       <VersionBox>
         <SmallContainer>
-          <VersionNum>version 1.1.1</VersionNum>
+          <VersionNum>version 1.2.2</VersionNum>
           <UploadButton src={"/img/UploadButton.png"} />
         </SmallContainer>
         <FileContainer>
          <File>
           <TinyContainer>
-              <FileName>파일이름파일이름파일이름파일이름파일이름파일이름파일이름파일이름파일이름파일이름파일이름파일이름파일이름</FileName>
-              <Comment>commentcommentcommentcommentcommentcommentcommentcommentcommentcommentcommentcommentcomment</Comment>
+              <FileName>Assemble 기획 아이디어 .txt</FileName>
+              <Comment>캘린더 내용 추가했습니다.</Comment>
             </TinyContainer>
             <SmallContainer>
               <TinyCommitInfoContainer>
-                <SmallCommitter>소리성</SmallCommitter>
+                <SmallCommitter>최재오</SmallCommitter>
                 <TinyCommitTimeContainer>
-                  <SmallCommitDay>어제</SmallCommitDay>
-                  <SmallCommitTime>오후 3시</SmallCommitTime>
+                  <SmallCommitDay> 2022-07-27</SmallCommitDay>
+                  <SmallCommitTime>오전 4:43</SmallCommitTime>
                 </TinyCommitTimeContainer>
               </TinyCommitInfoContainer>
             </SmallContainer>
          </File>
-         <File />
-         <File />
+         <File>
+          <TinyContainer>
+              <FileName>Assemble 기획 아이디어 .txt</FileName>
+              <Comment>심심해서 추가해봤습니다.</Comment>
+            </TinyContainer>
+            <SmallContainer>
+              <TinyCommitInfoContainer>
+                <SmallCommitter>이성</SmallCommitter>
+                <TinyCommitTimeContainer>
+                  <SmallCommitDay>2022-07-25</SmallCommitDay>
+                  <SmallCommitTime>오후 5:23</SmallCommitTime>
+                </TinyCommitTimeContainer>
+              </TinyCommitInfoContainer>
+            </SmallContainer>
+         </File>
+         <File>
+          <TinyContainer>
+              <FileName>Assemble 기획 아이디어 .txt</FileName>
+              <Comment>로그인 페이지 제작했습니다.</Comment>
+            </TinyContainer>
+            <SmallContainer>
+              <TinyCommitInfoContainer>
+                <SmallCommitter>이성</SmallCommitter>
+                <TinyCommitTimeContainer>
+                  <SmallCommitDay>2022-07-20</SmallCommitDay>
+                  <SmallCommitTime>오전 1:43 </SmallCommitTime>
+                </TinyCommitTimeContainer>
+              </TinyCommitInfoContainer>
+            </SmallContainer>
+         </File>
         </FileContainer>
       </VersionBox>
     </MainContainer>

@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useState } from "react";
 
+// todo 리스트 생성 컴포넌트
 // 수정 필요 (페이지 연결 식으로 하는 방법도 고려중)
 
 // 전체 박스

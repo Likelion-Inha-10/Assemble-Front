@@ -9,7 +9,6 @@ import {
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { GoTriangleDown, GoTriangleUp } from "react-icons/go";
 import { useState } from "react";
-import MakeToDo from "./MakeToDo";
 
 // Todolist 전체 박스
 const Container = styled.div`
@@ -148,9 +147,7 @@ const IconBox = styled.div`
 
 const TodoList = () => {
   const [updown, setUpDown] = useState(false); // 완료 목록에서 화살표 클릭 시 행동을 위한 변수
-  const [modify, setModify] = useState(false); // 편집 버튼 클릭 시 해동을 위한 변수
-  // 투두리스트 목록 생성하는거 어떻게 할지 결정 필요
-  const [make, setMake] = useState(false); // todo 목록 생성 시 필요한 변수
+  const [modify, setModify] = useState(false); // 편집 버튼 클릭 시 행동을 위한 변수
   const [star, setStar] = useState(false); // 별표 클릭 시 행동을 위한 변수
 
   const onClickUpDown = () => {
@@ -159,10 +156,6 @@ const TodoList = () => {
 
   const onClickModify = () => {
     setModify(!modify);
-  };
-  // 투두리스트 목록 생성하는거 어떻게 할지 결정 필요
-  const onClickMake = () => {
-    setMake(!make);
   };
 
   const onClickStar = () => {
@@ -181,14 +174,8 @@ const TodoList = () => {
           <ProgBox>
             <Text>진행중인 Task</Text>
             {/* modify가 true면 plus 아이콘 나타남 -> todo 리스트 추가를 위한 버튼 */}
-            {modify ? (
-              <AiFillPlusCircle id="plusIcon" onClick={onClickMake} />
-            ) : (
-              ""
-            )}
+            {modify ? <AiFillPlusCircle id="plusIcon" /> : ""}
           </ProgBox>
-          {/* 플러스 버튼 클릭 시 todo 리스트 작성란이 나오도록 설정했지만 수정 필요 (페이지 이동 식으로 할까도 생각중) */}
-          {make ? <MakeToDo id="maketodo" /> : ""}
           <ProgressBox>
             <TaskBox>
               {/* modify가 참이면 '-'버튼 나타남 */}

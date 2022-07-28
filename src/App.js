@@ -1,6 +1,8 @@
 import FirstPage from "./pages/FristPage";
 import SignIn from "./pages/SignIn";
 import LogIn from "./pages/LogIn";
+import MyPage from "./pages/MyPage";
+import ErrorPage from "./pages/ErrorPage";
 import UserPage from "./pages/UserPage";
 import MakeProject from "./pages/MakeProject";
 import VersionToolPage from "./pages/VersionToolPage";
@@ -16,6 +18,10 @@ function App() {
         <Route path="/signin" element={<SignIn />} />
         {/* <LogIn /> */}
         <Route path="/login" element={<LogIn />} />
+        {/* <Calender /> */}
+        <Route path="/calendar" element={<MyPage />} />
+        {/* <Error /> */}
+        <Route path="/error" element={<ErrorPage />} />
         {/* 유저 메인페이지 */}
         <Route path="/userpage" element={<UserPage />} />
         {/* 프로젝트 생성 페이지 */}

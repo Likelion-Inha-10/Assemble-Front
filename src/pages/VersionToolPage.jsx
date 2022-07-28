@@ -1,11 +1,11 @@
 import React from 'react';
-import Header from '../component/Header';
+import LogInHeader from '../component/LogInHeader';
 import VerTool from '../component/VerTool/VerTool';
 
 const VersionToolPage = () => {
   return (
     <div>
-      <Header />
+      <LogInHeader />
       <VerTool />
     </div>
   );

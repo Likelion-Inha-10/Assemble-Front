@@ -5,6 +5,7 @@ import UserPage from "./pages/UserPage";
 import MakeProject from "./pages/MakeProject";
 import VersionToolPage from "./pages/VersionToolPage";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
+import TeamPage from "./pages/TeamPage";
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
         <Route path="/makeproject" element={<MakeProject />} />
         {/* 버전 툴 페이지 */}
         <Route path="/vertool" element={<VersionToolPage />} />
+        {/* 팀 페이지 */}
+        <Route path="/teampage" element={<TeamPage />} />
       </Routes>
     </BrowserRouter>
   );

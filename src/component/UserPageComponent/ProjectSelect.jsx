@@ -80,6 +80,7 @@ const ProjectImage = styled.div`
   align-items: center;
   justify-content: center;
 
+  // 편집 누르지 않았을 때 아이콘의 css
   .sumnailIcon {
     height: 140px;
     flex: none;
@@ -88,6 +89,18 @@ const ProjectImage = styled.div`
     color: #075995;
   }
 
+  // 편집 버튼 눌렀을 때 아이콘의 css
+  // 편집 버튼 눌렀을 경우 '-' 버튼 태그의 추가로 아이콘의 위치가 변하기 때문에 편집 눌렀을 때 안눌렀을 때 아이콘의 css 따로 작성함
+  .sumnailIconEdit {
+    height: 104px;
+    padding-bottom: 31px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    color: #075995;
+  }
+
+  // 편집 눌렀을 때 '-' 아이콘
   #minusIcon {
     align-self: flex-end;
     padding-top: 5px;
@@ -159,23 +172,42 @@ const ProjectSelect = () => {
           {modify ? "저장" : "편집"}
         </ModifyText>
         <ProjectBox>
+          {modify ? (
+            <Project>
+              <ProjectImage>
+                {/* modify가 참이면 '-' 버튼 나옴 */}
+                <AiOutlineMinusCircle id="minusIcon" />
+                <HouseLine className="sumnailIconEdit" size={80} />
+              </ProjectImage>
+              <ProjectName>인하대학교</ProjectName>
+            </Project>
+          ) : (
+            <Project>
+              <ProjectImage>
+                <HouseLine className="sumnailIcon" size={80} />
+              </ProjectImage>
+              <ProjectName>인하대학교</ProjectName>
+            </Project>
+          )}
+
+          {modify ? (
+            <Project>
+              <ProjectImage>
+                <AiOutlineMinusCircle id="minusIcon" />
+                <DesktopTower className="sumnailIconEdit" size={80} />
+              </ProjectImage>
+              <ProjectName>해커톤이성</ProjectName>
+            </Project>
+          ) : (
+            <Project>
+              <ProjectImage>
+                <DesktopTower className="sumnailIcon" size={80} />
+              </ProjectImage>
+              <ProjectName>해커톤이성</ProjectName>
+            </Project>
+          )}
           <Project>
-            <ProjectImage>
-              {/* 편집 버튼 클릭 시 (modify=true) 각 프로젝트 사진에 '-' 아이콘 나타남 */}
-              {modify ? <AiOutlineMinusCircle id="minusIcon" /> : ""}
-              <HouseLine className="sumnailIcon" size={80} />
-            </ProjectImage>
-            <ProjectName>인하대학교</ProjectName>
-          </Project>
-          <Project>
-            <ProjectImage>
-              {/* 편집 버튼 클릭 시 (modify=true) 각 프로젝트 사진에 '-' 아이콘 나타남 */}
-              {modify ? <AiOutlineMinusCircle id="minusIcon" /> : ""}
-              <DesktopTower className="sumnailIcon" size={80} />
-            </ProjectImage>
-            <ProjectName>해커톤이성</ProjectName>
-          </Project>
-          <Project>
+            {/* 플러스 박스 누르면 프로젝트 생성 페이지로 넘어감 */}
             <NavLink to={"/makeproject"}>
               <PlusImage></PlusImage>
             </NavLink>

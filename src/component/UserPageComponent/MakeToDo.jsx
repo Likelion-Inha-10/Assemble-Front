@@ -55,7 +55,7 @@ const XButton = styled.button`
   padding-right: 15px;
 `;
 
-// 일정 적는 부분
+// 제목 적는 부분
 const Input = styled.input`
   width: 200px;
   height: 30px;
@@ -74,6 +74,7 @@ const Input = styled.input`
   margin-top: 20px;
 `;
 
+// 내용 적는 부분
 const TextArea = styled.textarea`
   width: 200px;
   height: 150px;
@@ -147,31 +148,30 @@ const SaveButton = styled.button`
 `;
 
 const MakeToDo = ({ apiUrl }) => {
-  const [out, setOut] = useState(false);
-  const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
+  const [title, setTitle] = useState(""); // 제목 값 담는 변수
+  const [body, setBody] = useState(""); // 내용 값 담는 변수
   const navigate = useNavigate();
 
-  const onClickOut = () => {
-    setOut(!out);
-  };
-
+  // 제목 값 저장
   const onChangeTitle = (e) => {
     setTitle(e.target.value);
-    console.log(e.target.value);
+    // console.log(e.target.value);
   };
 
+  // 내용 값 저장
   const onChangeBody = (e) => {
     setBody(e.target.value);
   };
 
+  // 취소 버튼 클릭 시 userpage로 돌아감
   const onClickCancel = () => {
     navigate("/userpage");
   };
 
+  // 저장 버튼 클릭 시 데이터 저장되고 userpage로 돌아감
   const onClickSave = () => {
     axios
-      .post(`http://172.104.68.149:8000/create_tdl`, {
+      .post(`${apiUrl}/create_tdl/`, {
         title: title,
         body: body,
       })
@@ -185,31 +185,27 @@ const MakeToDo = ({ apiUrl }) => {
 
   return (
     <>
-      {out ? (
-        ""
-      ) : (
-        <Container>
-          <TopBox>
-            <Top />
-            <XButton onClick={onClickOut}>X</XButton>
-          </TopBox>
-          <Input
-            type={"text"}
-            placeholder={"제목"}
-            onChange={onChangeTitle}
-            value={title}
-          />
-          <TextArea
-            placeholder="내용"
-            onChange={onChangeBody}
-            value={body}
-          ></TextArea>
-          <ButtonBox>
-            <CancelButton onClick={onClickCancel}>취소</CancelButton>
-            <SaveButton onClick={onClickSave}>저장</SaveButton>
-          </ButtonBox>
-        </Container>
-      )}
+      <Container>
+        <TopBox>
+          <Top />
+          <XButton>X</XButton>
+        </TopBox>
+        <Input
+          type={"text"}
+          placeholder={"제목"}
+          onChange={onChangeTitle}
+          value={title}
+        />
+        <TextArea
+          placeholder="내용"
+          onChange={onChangeBody}
+          value={body}
+        ></TextArea>
+        <ButtonBox>
+          <CancelButton onClick={onClickCancel}>취소</CancelButton>
+          <SaveButton onClick={onClickSave}>저장</SaveButton>
+        </ButtonBox>
+      </Container>
     </>
   );
 };

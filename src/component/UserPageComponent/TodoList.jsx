@@ -110,6 +110,7 @@ const TaskBox = styled.div`
   box-sizing: border-box;
   width: 290px;
   height: 30px;
+  margin-top: 10px;
 
   border: 1px solid rgba(0, 0, 0, 0.3);
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
@@ -138,6 +139,7 @@ const TaskContent = styled.div`
   flex: none;
   order: 0;
   flex-grow: 0;
+  text-align: center;
 `;
 
 // 별, 세로메뉴 아이콘 포함하고 있는 박스
@@ -150,33 +152,70 @@ const IconBox = styled.div`
 const TodoList = ({ apiUrl }) => {
   const [updown, setUpDown] = useState(true); // 완료 목록에서 화살표 클릭 시 행동을 위한 변수
   const [modify, setModify] = useState(false); // 편집 버튼 클릭 시 행동을 위한 변수
-  const [star, setStar] = useState(false); // 별표 클릭 시 행동을 위한 변수
-  const [proclists, setProcLists] = useState([]);
-  const [donelists, setDoneLists] = useState([]);
+  const [proclists, setProcLists] = useState([]); // 진행중인 task 담는 배열
+  const [donelists, setDoneLists] = useState([]); // 완료된 task 담는 배열
+  const [detail, setDetail] = useState([]); // 투두리스트 상세 내용 담는 배열
 
   const navigate = useNavigate();
 
+  // 완료 task옆 삼각형 변화를 위한 함수
   const onClickUpDown = () => {
     setUpDown(!updown);
   };
 
+  // 편집 버튼 클릭 시 변화를 위한 함수
   const onClickModify = () => {
     setModify(!modify);
   };
 
-  const onClickStar = () => {
-    setStar(!star);
+  // 별 모양 클릭 시 해당 task의 is_first 값 변경
+  const onClickStar = (e) => {
+    axios.post(`${apiUrl}/tdl/priority/${e.target.id}`).then((res) => {
+      window.location.reload(true);
+    });
   };
 
+  // 편집 눌렀을 때 나타나는 플러스 버튼 클릭 시 투두리스트 생성 페이지로 이동
   const onClickMake = () => {
     navigate("/maketodo");
   };
 
+  // 진행중인 task와 완료된 task 데이터 가져옴
   useEffect(() => {
-    axios.get(`http://172.104.68.149:8000/main/`).then((res) => {
-      console.log(res.data);
+    axios.get(`${apiUrl}/main/`).then((res) => {
+      setProcLists(res.data["To Do Lists"]);
+      setDoneLists(res.data["End Lists"]);
     });
   }, []);
+
+  // 완료 task 체크박스 클릭 시 is_end 값 변경
+  const onChangeDone = (e) => {
+    axios.post(`${apiUrl}/tdl/end/${e.target.id}`).then(() => {
+      window.location.reload(true);
+    });
+  };
+
+  // 진행 task 체크박스 클릭 시 is_end 값 변경
+  const onChangeProc = (e) => {
+    axios.post(`${apiUrl}/tdl/end/${e.target.id}`).then(() => {
+      window.location.reload(true);
+    });
+  };
+
+  // task 상세내용 불러옴 (제목 & 내용)
+  const onClickDetail = (e) => {
+    axios.get(`${apiUrl}/tdl/${e.target.id}`).then((res) => {
+      // console.log(res.data);
+      setDetail(res.data);
+    });
+  };
+
+  // '-'버튼 클릭 시 해당 task 삭제
+  const onClickDelete = (e) => {
+    axios.post(`${apiUrl}/delete_tdl/${e.target.id}`).then(() => {
+      window.location.reload(true);
+    });
+  };
 
   return (
     <>
@@ -197,27 +236,46 @@ const TodoList = ({ apiUrl }) => {
             )}
           </ProgBox>
           <ProgressBox>
-            <TaskBox>
-              {/* modify가 참이면 '-'버튼 나타남 */}
-              {modify ? (
-                <AiOutlineMinusCircle style={{ width: "30px", color: "red" }} />
-              ) : (
-                <CheckBox type={"checkbox"}></CheckBox>
-              )}
-              <TaskContent>임시 테스트</TaskContent>
-              <IconBox>
-                {/* star이 참이면 색이 칠해진 별표로 변경됨 */}
-                {star ? (
-                  <AiTwotoneStar
-                    style={{ color: "#075995" }}
-                    onClick={onClickStar}
-                  />
-                ) : (
-                  <AiOutlineStar onClick={onClickStar} />
-                )}
-                <BsThreeDotsVertical></BsThreeDotsVertical>
-              </IconBox>
-            </TaskBox>
+            {/* map을 통해서 proclists 배열에 저장된 진행 task 데이터 하나씩 화면에 나타냄 */}
+            {proclists.map((proclist) => {
+              return (
+                <TaskBox key={proclist.id}>
+                  {/* modify가 참이면 '-' 버튼 나타남 / 거짓이면 체크박스 나타남 */}
+                  {modify ? (
+                    <AiOutlineMinusCircle
+                      style={{ width: "30px", color: "red" }}
+                      id={proclist.id}
+                      onClick={onClickDelete}
+                    />
+                  ) : (
+                    <CheckBox
+                      type={"checkbox"}
+                      id={proclist.id}
+                      onChange={onChangeDone}
+                    ></CheckBox>
+                  )}
+                  {/* 해당 task의 제목 나타냄 */}
+                  <TaskContent>{proclist.title}</TaskContent>
+                  <IconBox>
+                    {/* 해당 task의 is_first 값이 참이면 별 색 채워짐 & 위치 올라감 / 거짓이면 별 색 비워짐 & 위치 원상복귀 */}
+                    {proclist.is_first ? (
+                      <AiTwotoneStar
+                        style={{ color: "#075995" }}
+                        id={proclist.id}
+                        onClick={onClickStar}
+                      />
+                    ) : (
+                      <AiOutlineStar id={proclist.id} onClick={onClickStar} />
+                    )}
+                    {/* 세로 메뉴 버튼 클릭 시 상세내용 볼 수 있음 (더 코드 짜야됨) */}
+                    <BsThreeDotsVertical
+                      id={proclist.id}
+                      onClick={onClickDetail}
+                    ></BsThreeDotsVertical>
+                  </IconBox>
+                </TaskBox>
+              );
+            })}
           </ProgressBox>
           <ComTextBox>
             <Text style={{ width: "110px" }}>완료된 Task</Text>
@@ -236,31 +294,52 @@ const TodoList = ({ apiUrl }) => {
           </ComTextBox>
           <CompleteBox>
             {/* updown이 true면 완료된 task 목록 나타남 */}
-            {updown ? (
-              <TaskBox>
-                {modify ? (
-                  <AiOutlineMinusCircle
-                    style={{ width: "30px", color: "red" }}
-                  />
-                ) : (
-                  <CheckBox type={"checkbox"}></CheckBox>
-                )}
-                <TaskContent>임시 테스트</TaskContent>
-                <IconBox>
-                  {star ? (
-                    <AiTwotoneStar
-                      style={{ color: "#075995" }}
-                      onClick={onClickStar}
-                    />
-                  ) : (
-                    <AiOutlineStar onClick={onClickStar} />
-                  )}
-                  <BsThreeDotsVertical></BsThreeDotsVertical>
-                </IconBox>
-              </TaskBox>
-            ) : (
-              ""
-            )}
+            {updown
+              ? donelists.map((donelist) => {
+                  /* map을 통해서 donelists 배열에 저장된 완료 task 데이터 하나씩 화면에 나타냄 */
+                  return (
+                    <TaskBox key={donelist.id}>
+                      {/* modify가 참이면 '-' 버튼 나타남 / 거짓이면 체크박스 나타남 */}
+                      {modify ? (
+                        <AiOutlineMinusCircle
+                          style={{ width: "30px", color: "red" }}
+                          id={donelist.id}
+                          onClick={onClickDelete}
+                        />
+                      ) : (
+                        <CheckBox
+                          type={"checkbox"}
+                          checked
+                          id={donelist.id}
+                          onChange={onChangeProc}
+                        ></CheckBox>
+                      )}
+                      {/* 해당 task의 제목 나타냄 */}
+                      <TaskContent>{donelist.title}</TaskContent>
+                      <IconBox>
+                        {/* 해당 task의 is_first 값이 참이면 별 색 채워짐 & 위치 올라감 / 거짓이면 별 색 비워짐 & 위치 원상복귀 */}
+                        {donelist.is_first ? (
+                          <AiTwotoneStar
+                            style={{ color: "#075995" }}
+                            id={donelist.id}
+                            onClick={onClickStar}
+                          />
+                        ) : (
+                          <AiOutlineStar
+                            id={donelist.id}
+                            onClick={onClickStar}
+                          />
+                        )}
+                        {/* 세로 메뉴 버튼 클릭 시 상세내용 볼 수 있음 (더 코드 짜야됨) */}
+                        <BsThreeDotsVertical
+                          id={donelist.id}
+                          onClick={onClickDetail}
+                        ></BsThreeDotsVertical>
+                      </IconBox>
+                    </TaskBox>
+                  );
+                })
+              : ""}
           </CompleteBox>
         </ListBox>
       </Container>

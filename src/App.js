@@ -7,7 +7,8 @@ import MakeToDo from "./component/UserPageComponent/MakeToDo";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 function App() {
-  const apiUrl = "http://127.0.0.1:8000";
+  // api 주소
+  const apiUrl = "http://172.104.68.149:8000";
 
   return (
     <BrowserRouter>
@@ -22,6 +23,7 @@ function App() {
         <Route path="/userpage" element={<UserPage apiUrl={apiUrl} />} />
         {/* 프로젝트 생성 페이지 */}
         <Route path="/makeproject" element={<MakeProject apiUrl={apiUrl} />} />
+        {/* 투두리스트 생성 페이지 */}
         <Route path="/maketodo" element={<MakeToDo apiUrl={apiUrl} />} />
       </Routes>
     </BrowserRouter>

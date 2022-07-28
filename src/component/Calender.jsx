@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
+import Modal from 'react-modal';
 
 // 개인 캘린더
 const Personal = styled.div`
@@ -242,8 +243,124 @@ const Circle = styled.img`
   left: 773px;
   top: 587px;
 `;
+// 팝업 창 모임 큰 제목
+const ModalContent = styled.div`
+  position: absolute;
+  left: 35px;
+  top: 35px;
+
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 17px;
+  text-align: right;
+
+  color: #706363;
+`;
+
+// 팝업 창 날짜
+const ModalSchedule = styled.div`
+position: absolute;
+width: 193px;
+height: 17px;
+top: 70px;
+left: 155px;
+
+font-family: 'Noto Sans KR';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 17px;
+
+color: #000000;
+`;
+
+// 팝업 창 그룹
+const ModalGroup = styled.div`
+position: absolute;
+width: 23px;
+height: 17px;
+top: 105px;
+left: 37px;
+
+font-family: 'Noto Sans KR';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 17px;
+
+color: #000000;
+`
+
+// 팝업 창 시계 이미지
+const ModalTime = styled.img`
+  position: absolute;
+  left: 39px;
+  top: 72px;
+  width: 15px;
+  height: 15px;
+`;
+
+// 팝업 창 모임 작성 칸
+const ModalBox = styled.img`
+  position: absolute;
+  left: 155px;
+  top: 100px;
+  width: 172px;
+  height: 25px;
+`;
+
+// 팝업 창 캘린더 하이라이트 색
+const ModalColor = styled.img`
+  position: absolute;
+  left: 165px;
+  top: 107px;
+  width: 11px;
+  height: 11px;
+`;
+
+// 팝업 창 그룹 이름
+const ModalText = styled.div`
+  position: absolute;
+  left: 200px;
+  top: 105px;
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+
+  color: #000000;
+`;
+
+// 팝업 창 삭제 칸
+const ModalDelete = styled.div`
+  position: absolute;
+  left: 250px;
+  top: 153px;
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 17px;
+
+  color: red;
+`;
+
+// 팝업 창 저장 버튼
+const ModalSave = styled.img`
+  position: absolute;
+  left: 300px;
+  top: 145px;
+  width: 56px;
+  height: 30px;
+`;
 
 const Calender = ({color, length, height}) => {
+
+  const[modalIsOpen, setModalIsOpen] = useState(false);
+
   return (
     <>
       <Personal>개인 캘린더</Personal>
@@ -299,13 +416,13 @@ const Calender = ({color, length, height}) => {
         <Days color={"rgba(0, 0, 0, 0.3)"} length={"541px"} height={"705px"}>4</Days>
         <Days color={"rgba(0, 0, 0, 0.3)"} length={"660px"} height={"705px"}>5</Days>
         <Days color={"rgba(7, 89, 149, 0.3)"} length={"779px"} height={"705px"}>6</Days>
-        <ScheduleBox1 src={"/img/purple.png"} alt="purple" />
-        <ScheduleBox2 src={"/img/purple.png"} alt="purple" />
-        <ScheduleBox3 src={"/img/peach.png"} alt="peach" />
-        <ScheduleBox4 src={"/img/orange.png"} alt="orange" />
-        <ScheduleBox5 src={"/img/orange.png"} alt="orange" />
-        <ScheduleBox6 src={"/img/red.png"} alt="red" />
-        <ScheduleBox7 src={"/img/red.png"} alt="red" />
+        <ScheduleBox1 src={"/img/purple.png"} alt="purple" onClick={() => setModalIsOpen(true)}/>
+        <ScheduleBox2 src={"/img/purple.png"} alt="purple" onClick={() => setModalIsOpen(true)}/>
+        <ScheduleBox3 src={"/img/peach.png"} alt="peach" onClick={() => setModalIsOpen(true)}/>
+        <ScheduleBox4 src={"/img/orange.png"} alt="orange" onClick={() => setModalIsOpen(true)}/>
+        <ScheduleBox5 src={"/img/orange.png"} alt="orange" onClick={() => setModalIsOpen(true)}/>
+        <ScheduleBox6 src={"/img/red.png"} alt="red" onClick={() => setModalIsOpen(true)}/>
+        <ScheduleBox7 src={"/img/red.png"} alt="red" onClick={() => setModalIsOpen(true)}/>
         <Schedule1 src={"/img/content1.png"} alt="likelion" />
         <Schedule2 src={"/img/content1.png"} alt="likelion" />
         <Schedule3 src={"/img/content2.png"} alt="friends" />
@@ -314,6 +431,32 @@ const Calender = ({color, length, height}) => {
         <Schedule6 src={"/img/content3.png"} alt="hackathon" />
         <Schedule7 src={"/img/content4.png"} alt="testtime" />
         <Circle src={"/img/circle.png"} alt="circle" />
+        <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}
+        style={{
+          content: {
+            position: 'absolute',
+            top: '400px',
+            left: '600px',
+            width: '343px',
+            height: '146px',
+            border: '1px solid #075995',
+            overflow: 'auto',
+            WebkitOverflowScrolling: 'touch',
+            borderRadius: '20px',
+            outline: 'none',
+            padding: '20px'
+          }
+        }}>
+          <ModalContent>해커톤 회의</ModalContent>
+          <ModalSchedule>7월 14일 (목요일) - 7월 14일 (목요일)</ModalSchedule>
+          <ModalGroup>그룹</ModalGroup>
+          <ModalTime src={"/img/time.png"} alt="time" />
+          <ModalBox src={"/img/rectangle.png"} alt="rectangle" />
+          <ModalColor src={"/img/pulplebox.png"} alt="color" />
+          <ModalText>해커톤 이성 TEAM</ModalText>
+          <ModalDelete>삭제</ModalDelete>
+          <ModalSave src={"/img/save.png"} alt="save" onClick={() => setModalIsOpen(false)}/>
+        </Modal>
       </Box>
     </>
   );

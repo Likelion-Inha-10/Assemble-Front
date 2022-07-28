@@ -2,6 +2,7 @@ import FirstPage from "./pages/FristPage";
 import SignIn from "./pages/SignIn";
 import LogIn from "./pages/LogIn";
 import MyPage from "./pages/MyPage";
+import ErrorPage from "./pages/ErrorPage";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 function App() {
@@ -16,6 +17,8 @@ function App() {
         <Route path="/login" element={<LogIn />} />
         {/* <Calender /> */}
         <Route path="/calendar" element={<MyPage />} />
+        {/* <Error /> */}
+        <Route path="/error" element={<ErrorPage />} />
       </Routes>
     </BrowserRouter> 
   );

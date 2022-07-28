@@ -13,6 +13,8 @@ import {
   Hamburger,
   HouseLine,
 } from "phosphor-react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 // 전체 박스
 const Container = styled.div`
@@ -180,17 +182,27 @@ const MakeButton = styled.button`
   margin-top: 20px;
 `;
 
-const NewProject = () => {
-  const [name, setName] = useState(""); // 이름
-  const [intro, setIntro] = useState(""); // 팀 설명
+const NewProject = ({ apiUrl }) => {
+  const [title, setTitle] = useState(""); // 이름
+  const navigate = useNavigate();
 
-  const onChangeName = (e) => {
-    setName(e.target.value);
+  const onChangeTitle = (e) => {
+    setTitle(e.target.value);
   };
 
-  const onChangeIntro = (e) => {
-    setIntro(e.target.value);
+  const onClickSubmit = () => {
+    axios
+      .post(`${apiUrl}/create_grp`, {
+        title: title,
+      })
+      .then(() => {
+        navigate("/userpage");
+      })
+      .catch((err) => {
+        console.log(err.response.data.message);
+      });
   };
+
   return (
     <>
       <Container>
@@ -206,17 +218,13 @@ const NewProject = () => {
           <Input
             type={"type"}
             placeholder={"팀 이름을 입력해주세요"}
-            onChange={onChangeName}
-            value={name}
+            onChange={onChangeTitle}
+            value={title}
           ></Input>
         </Box>
         <Box>
           <Text>팀소개</Text>
-          <TextArea
-            placeholder="팀에 대한 정보를 입력해주세요"
-            onChange={onChangeIntro}
-            value={intro}
-          ></TextArea>
+          <TextArea placeholder="팀에 대한 정보를 입력해주세요"></TextArea>
         </Box>
         <Box>
           <Text>썸네일 설정</Text>
@@ -244,7 +252,7 @@ const NewProject = () => {
           </div>
         </Box>
         <hr style={{ marginTop: "20px" }}></hr>
-        <MakeButton>팀 페이지 생성</MakeButton>
+        <MakeButton onClick={onClickSubmit}>팀 페이지 생성</MakeButton>
       </Container>
     </>
   );

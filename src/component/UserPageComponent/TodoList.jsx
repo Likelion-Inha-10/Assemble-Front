@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import {
   AiOutlineStar,
@@ -9,6 +9,8 @@ import {
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { GoTriangleDown, GoTriangleUp } from "react-icons/go";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 // Todolist 전체 박스
 const Container = styled.div`
@@ -145,10 +147,14 @@ const IconBox = styled.div`
   align-items: center;
 `;
 
-const TodoList = () => {
-  const [updown, setUpDown] = useState(false); // 완료 목록에서 화살표 클릭 시 행동을 위한 변수
+const TodoList = ({ apiUrl }) => {
+  const [updown, setUpDown] = useState(true); // 완료 목록에서 화살표 클릭 시 행동을 위한 변수
   const [modify, setModify] = useState(false); // 편집 버튼 클릭 시 행동을 위한 변수
   const [star, setStar] = useState(false); // 별표 클릭 시 행동을 위한 변수
+  const [proclists, setProcLists] = useState([]);
+  const [donelists, setDoneLists] = useState([]);
+
+  const navigate = useNavigate();
 
   const onClickUpDown = () => {
     setUpDown(!updown);
@@ -162,6 +168,16 @@ const TodoList = () => {
     setStar(!star);
   };
 
+  const onClickMake = () => {
+    navigate("/maketodo");
+  };
+
+  useEffect(() => {
+    axios.get(`http://172.104.68.149:8000/main/`).then((res) => {
+      console.log(res.data);
+    });
+  }, []);
+
   return (
     <>
       <Container>
@@ -174,7 +190,11 @@ const TodoList = () => {
           <ProgBox>
             <Text>진행중인 Task</Text>
             {/* modify가 true면 plus 아이콘 나타남 -> todo 리스트 추가를 위한 버튼 */}
-            {modify ? <AiFillPlusCircle id="plusIcon" /> : ""}
+            {modify ? (
+              <AiFillPlusCircle id="plusIcon" onClick={onClickMake} />
+            ) : (
+              ""
+            )}
           </ProgBox>
           <ProgressBox>
             <TaskBox>

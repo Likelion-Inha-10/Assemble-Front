@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 // 상단바 밑에 부분 전체를 포함하고 있는 박스
 const Container = styled.div`
@@ -21,6 +22,7 @@ const Container = styled.div`
   }
 `;
 
+// '회원가입' 텍스트
 const SignInText = styled.div`
   width: 100px;
   height: 35px;
@@ -32,6 +34,7 @@ const SignInText = styled.div`
   margin-bottom: 30px;
 `;
 
+// '* 필수 입력사항' 텍스트
 const NoticeText = styled.div`
   width: 500px;
   height: 17px;
@@ -43,6 +46,7 @@ const NoticeText = styled.div`
   text-align: end;
 `;
 
+// 입력사항 전체 박스 (ex) 아이디 텍스트 + 아이디 input + 중복확인)
 const Box = styled.div`
   width: 500px;
 
@@ -52,6 +56,7 @@ const Box = styled.div`
   margin-top: 18px;
 `;
 
+// 각 입력사항 텍스트
 const Text = styled.div`
   width: 130px;
   height: 23px;
@@ -61,6 +66,7 @@ const Text = styled.div`
   line-height: 23px;
 `;
 
+// 각 입력사항 input
 const Input = styled.input`
   width: 256px;
   height: 43px;
@@ -73,6 +79,7 @@ const Input = styled.input`
   padding-left: 10px;
 `;
 
+// 중복확인 버튼
 const DupButton = styled.button`
   width: 80px;
   height: 43px;
@@ -94,6 +101,7 @@ const DupButton = styled.button`
   margin-left: 20px;
 `;
 
+// 인증번호 받기 버튼
 const CertificButton = styled.button`
   width: 102px;
   height: 43px;
@@ -112,12 +120,14 @@ const CertificButton = styled.button`
   margin-left: 10px;
 `;
 
+// 성별 선택 박스
 const GenderBox = styled.div`
   width: 300px;
   display: flex;
   justify-content: space-between;
 `;
 
+// 가입하기 버튼
 const JoinButton = styled.div`
   width: 190px;
   height: 43px;
@@ -139,11 +149,48 @@ const JoinButton = styled.div`
 `;
 
 const MakeId = () => {
+  const [id, setId] = useState(""); // 아이디
+  const [pwd, setPwd] = useState(""); // 비밀번호
+  const [name, setName] = useState(""); // 이름
+  const [email, setEmail] = useState(""); // 이메일
+  const [phone, setPhone] = useState(""); // 핸드폰 번호
+  const [birth, setBirth] = useState(""); // 생년월일
+  const [gender, setGender] = useState(""); // 성별
+
+  const onChangeId = (e) => {
+    setId(e.target.value);
+  };
+
+  const onChangePwd = (e) => {
+    setPwd(e.target.value);
+  };
+
+  const onChangeName = (e) => {
+    setName(e.target.value);
+  };
+
+  const onChangeEmail = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const onChangePhone = (e) => {
+    setPhone(e.target.value);
+  };
+
+  const onChangeBirth = (e) => {
+    setBirth(e.target.value);
+  };
+
+  const onChangeGender = (e) => {
+    setGender(e.target.value);
+  };
+
   const navigate = useNavigate();
 
   const goToMain = () => {
     navigate("/");
-  }
+  };
+
   return (
     <>
       <Container>
@@ -159,6 +206,8 @@ const MakeId = () => {
           <Input
             type={"text"}
             placeholder="6자 이상의 영문과 숫자를 조합"
+            onChange={onChangeId}
+            value={id}
           ></Input>
           <DupButton>중복확인</DupButton>
         </Box>
@@ -166,7 +215,12 @@ const MakeId = () => {
           <Text>
             비밀번호 <span style={{ color: "rgba(253, 9, 9, 0.5)" }}>*</span>
           </Text>
-          <Input type={"text"} placeholder="비밀번호를 입력해주세요"></Input>
+          <Input
+            type={"text"}
+            placeholder="비밀번호를 입력해주세요"
+            onChange={onChangePwd}
+            value={pwd}
+          ></Input>
         </Box>
         <Box>
           <Text>
@@ -182,25 +236,40 @@ const MakeId = () => {
           <Text>
             이름 <span style={{ color: "rgba(253, 9, 9, 0.5)" }}>*</span>
           </Text>
-          <Input type={"text"} placeholder="이름을 입력해주세요"></Input>
+          <Input
+            type={"text"}
+            placeholder="이름을 입력해주세요"
+            onChange={onChangeName}
+            value={name}
+          ></Input>
         </Box>
         <Box>
           <Text>
             이메일 <span style={{ color: "rgba(253, 9, 9, 0.5)" }}>*</span>
           </Text>
-          <Input type={"text"} placeholder="예 : assemble@liklion.org"></Input>
+          <Input
+            type={"text"}
+            placeholder="예 : assemble@liklion.org"
+            onChange={onChangeEmail}
+            value={email}
+          ></Input>
           <DupButton>중복확인</DupButton>
         </Box>
         <Box>
           <Text>
             휴대폰 <span style={{ color: "rgba(253, 9, 9, 0.5)" }}>*</span>
           </Text>
-          <Input type={"text"} placeholder="숫자만 입력해주세요"></Input>
+          <Input
+            type={"text"}
+            placeholder="숫자만 입력해주세요"
+            onChange={onChangePhone}
+            value={phone}
+          ></Input>
           <CertificButton>인증번호 받기</CertificButton>
         </Box>
         <Box>
           <Text>성별</Text>
-          <GenderBox>
+          <GenderBox onChange={onChangeGender}>
             <div class="manRadio">
               <input type="radio" id="man" name="gender" value="man"></input>
               <label for="man">남자</label>
@@ -230,6 +299,8 @@ const MakeId = () => {
           <Input
             type={"text"}
             placeholder="YYYY       /       MM       /       DD"
+            onChange={onChangeBirth}
+            value={birth}
           ></Input>
         </Box>
         <hr></hr>

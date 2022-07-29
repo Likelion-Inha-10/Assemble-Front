@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { useState } from "react";
 import {TiArrowSortedDown} from "react-icons/ti";
-import Modal from 'react-modal';
 
 // Calender 전체 박스
 const Container = styled.div`
@@ -178,124 +177,8 @@ const SceduleText2 = styled.div`
   padding-top: 3px;
 `;
 
-// 팝업 창 모임 큰 제목
-const ModalContent = styled.div`
-  position: absolute;
-  left: 35px;
-  top: 35px;
-
-  font-family: 'Noto Sans KR';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 17px;
-  text-align: right;
-
-  color: #706363;
-`;
-
-// 팝업 창 날짜
-const ModalSchedule = styled.div`
-position: absolute;
-width: 193px;
-height: 17px;
-top: 70px;
-left: 155px;
-
-font-family: 'Noto Sans KR';
-font-style: normal;
-font-weight: 400;
-font-size: 12px;
-line-height: 17px;
-
-color: #000000;
-`;
-
-// 팝업 창 그룹
-const ModalGroup = styled.div`
-position: absolute;
-width: 23px;
-height: 17px;
-top: 105px;
-left: 37px;
-
-font-family: 'Noto Sans KR';
-font-style: normal;
-font-weight: 400;
-font-size: 12px;
-line-height: 17px;
-
-color: #000000;
-`
-
-// 팝업 창 시계 이미지
-const ModalTime = styled.img`
-  position: absolute;
-  left: 39px;
-  top: 72px;
-  width: 15px;
-  height: 15px;
-`;
-
-// 팝업 창 모임 작성 칸
-const ModalBox = styled.img`
-  position: absolute;
-  left: 155px;
-  top: 100px;
-  width: 172px;
-  height: 25px;
-`;
-
-// 팝업 창 캘린더 하이라이트 색
-const ModalColor = styled.img`
-  position: absolute;
-  left: 165px;
-  top: 107px;
-  width: 11px;
-  height: 11px;
-`;
-
-// 팝업 창 그룹 이름
-const ModalText = styled.div`
-  position: absolute;
-  left: 200px;
-  top: 105px;
-  font-family: 'Noto Sans KR';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 17px;
-
-  color: #000000;
-`;
-
-// 팝업 창 삭제 칸
-const ModalDelete = styled.div`
-  position: absolute;
-  left: 250px;
-  top: 153px;
-  font-family: 'Noto Sans KR';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 17px;
-
-  color: red;
-`;
-
-// 팝업 창 저장 버튼
-const ModalSave = styled.img`
-  position: absolute;
-  left: 300px;
-  top: 145px;
-  width: 56px;
-  height: 30px;
-`;
-
-const Calender = ({ color, length, hight, changecolor }) => {
-
+const MiniCalendar = ({ color, length, hight, changecolor }) => {
   const [modify, setModify] = useState(false);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const onClickModify = () => {
     setModify(!modify);
@@ -394,37 +277,10 @@ const Calender = ({ color, length, hight, changecolor }) => {
             <Dates color= "rgba(0, 0, 0, 0.3)">5</Dates>
             <Dates color= "rgba(7, 89, 149, 0.3)">6</Dates>
           </DateBox>
-          
-          <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}
-          style={{
-            content: {
-              position: 'absolute',
-              top: '400px',
-              left: '600px',
-              width: '343px',
-              height: '146px',
-              border: '1px solid #075995',
-              overflow: 'auto',
-              WebkitOverflowScrolling: 'touch',
-              borderRadius: '20px',
-              outline: 'none',
-              padding: '20px'
-            }
-          }}>
-            <ModalContent>해커톤 회의</ModalContent>
-            <ModalSchedule>7월 14일 (목요일) - 7월 14일 (목요일)</ModalSchedule>
-            <ModalGroup>그룹</ModalGroup>
-            <ModalTime src={"/img/time.png"} alt="time" />
-            <ModalBox src={"/img/rectangle.png"} alt="rectangle" />
-            <ModalColor src={"/img/pulplebox.png"} alt="color" />
-            <ModalText>해커톤 이성 TEAM</ModalText>
-            <ModalDelete>삭제</ModalDelete>
-            <ModalSave src={"/img/save.png"} alt="save" onClick={() => setModalIsOpen(false)}/>
-          </Modal>
-        </CalendarBox>
+          </CalendarBox>
       </Container>
     </>
   );
 };
 
-export default Calender;
+export default MiniCalendar;

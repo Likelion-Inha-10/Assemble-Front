@@ -23,6 +23,7 @@ function App() {
         <Route path="/signin" element={<SignIn />} />
         {/* <LogIn /> */}
         <Route path="/login" element={<LogIn />} />
+        {/* <Calender /> */}
         {/* <Error /> */}
         <Route path="/error" element={<ErrorPage />} />
         {/* 유저 메인페이지 */}

@@ -295,7 +295,11 @@ const ModalSave = styled.img`
 const Calender = ({ color, length, hight, changecolor }) => {
 
   const [modify, setModify] = useState(false);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalIsOpen1, setModalIsOpen1] = useState(false);
+  const [modalIsOpen2, setModalIsOpen2] = useState(false);
+  const [modalIsOpen3, setModalIsOpen3] = useState(false);
+  const [modalIsOpen4, setModalIsOpen4] = useState(false);
+  const [modalIsOpen5, setModalIsOpen5] = useState(false);
 
   const onClickModify = () => {
     setModify(!modify);
@@ -343,10 +347,10 @@ const Calender = ({ color, length, hight, changecolor }) => {
             <Dates color= "black">8</Dates>
             <Dates color= "blue">9</Dates>
           </DateBox>
-          <ScheduleBox color="#F1A23E" length="148px" hight="0px" changecolor="#FB8C00">
+          <ScheduleBox color="#F1A23E" length="148px" hight="0px" changecolor="#FB8C00" onClick={() => setModalIsOpen3(true)}>
             <SceduleText>친구 약속</SceduleText>
           </ScheduleBox>
-          <ScheduleBox color="#8280FF" length="670px" hight="0px" changecolor="#0500FF">
+          <ScheduleBox color="#8280FF" length="670px" hight="0px" changecolor="#0500FF" onClick={() => setModalIsOpen4(true)}>
             <SceduleText>멋사 세션</SceduleText>
           </ScheduleBox>
           <DateBox>
@@ -358,10 +362,10 @@ const Calender = ({ color, length, hight, changecolor }) => {
             <Dates color= "black">15</Dates>
             <Dates color= "blue">16</Dates>
           </DateBox>
-          <ScheduleBox color="#B282CC" length="278px" hight="0px" changecolor="#AC26F5" onClick={() => setModalIsOpen(true)}>
+          <ScheduleBox color="#B282CC" length="278px" hight="0px" changecolor="#AC26F5" onClick={() => setModalIsOpen2(true)}>
             <SceduleText>해커톤 회의</SceduleText>
           </ScheduleBox>
-          <ScheduleBox color="#B282CC" length="538px" hight="0px" changecolor="#AC26F5">
+          <ScheduleBox color="#B282CC" length="538px" hight="0px" changecolor="#AC26F5" onClick={() => setModalIsOpen1(true)}>
             <SceduleText>해커톤 회의</SceduleText>
           </ScheduleBox>
           <DateBox>
@@ -373,7 +377,7 @@ const Calender = ({ color, length, hight, changecolor }) => {
             <Dates color= "black">22</Dates>
             <Dates color= "blue">23</Dates>
           </DateBox>
-          <ScheduleBox2 color="#F6CBD1" length="145px" hight="0px" changecolor="#FF647A">
+          <ScheduleBox2 color="#F6CBD1" length="145px" hight="0px" changecolor="#FF647A" onClick={() => setModalIsOpen5(true)}>
             <SceduleText2>계절학기 시험기간</SceduleText2>
           </ScheduleBox2>
           <DateBox>
@@ -395,7 +399,7 @@ const Calender = ({ color, length, hight, changecolor }) => {
             <Dates color= "rgba(7, 89, 149, 0.3)">6</Dates>
           </DateBox>
           
-          <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}
+          <Modal isOpen={modalIsOpen1} onRequestClose={() => setModalIsOpen1(false)}
           style={{
             content: {
               position: 'absolute',
@@ -416,10 +420,118 @@ const Calender = ({ color, length, hight, changecolor }) => {
             <ModalGroup>그룹</ModalGroup>
             <ModalTime src={"/img/time.png"} alt="time" />
             <ModalBox src={"/img/rectangle.png"} alt="rectangle" />
-            <ModalColor src={"/img/pulplebox.png"} alt="color" />
+            <ModalColor src={"/img/teambox.png"} alt="color" />
             <ModalText>해커톤 이성 TEAM</ModalText>
             <ModalDelete>삭제</ModalDelete>
-            <ModalSave src={"/img/save.png"} alt="save" onClick={() => setModalIsOpen(false)}/>
+            <ModalSave src={"/img/save.png"} alt="save" onClick={() => setModalIsOpen1(false)}/>
+          </Modal>
+
+          <Modal isOpen={modalIsOpen2} onRequestClose={() => setModalIsOpen2(false)}
+          style={{
+            content: {
+              position: 'absolute',
+              top: '400px',
+              left: '600px',
+              width: '343px',
+              height: '146px',
+              border: '1px solid #075995',
+              overflow: 'auto',
+              WebkitOverflowScrolling: 'touch',
+              borderRadius: '20px',
+              outline: 'none',
+              padding: '20px'
+            }
+          }}>
+            <ModalContent>해커톤 회의</ModalContent>
+            <ModalSchedule>7월 12일 (화요일) - 7월 12일 (화요일)</ModalSchedule>
+            <ModalGroup>그룹</ModalGroup>
+            <ModalTime src={"/img/time.png"} alt="time" />
+            <ModalBox src={"/img/rectangle.png"} alt="rectangle" />
+            <ModalColor src={"/img/teambox.png"} alt="color" />
+            <ModalText>해커톤 이성 TEAM</ModalText>
+            <ModalDelete>삭제</ModalDelete>
+            <ModalSave src={"/img/save.png"} alt="save" onClick={() => setModalIsOpen2(false)}/>
+          </Modal>
+
+          <Modal isOpen={modalIsOpen3} onRequestClose={() => setModalIsOpen3(false)}
+          style={{
+            content: {
+              position: 'absolute',
+              top: '400px',
+              left: '600px',
+              width: '343px',
+              height: '146px',
+              border: '1px solid #075995',
+              overflow: 'auto',
+              WebkitOverflowScrolling: 'touch',
+              borderRadius: '20px',
+              outline: 'none',
+              padding: '20px'
+            }
+          }}>
+            <ModalContent>친구 약속</ModalContent>
+            <ModalSchedule>7월 4일 (월요일) - 7월 4일 (월요일)</ModalSchedule>
+            <ModalGroup>그룹</ModalGroup>
+            <ModalTime src={"/img/time.png"} alt="time" />
+            <ModalBox src={"/img/rectangle.png"} alt="rectangle" />
+            <ModalColor src={"/img/teambox.png"} alt="color" />
+            <ModalText>해커톤 이성 TEAM</ModalText>
+            <ModalDelete>삭제</ModalDelete>
+            <ModalSave src={"/img/save.png"} alt="save" onClick={() => setModalIsOpen3(false)}/>
+          </Modal>
+
+          <Modal isOpen={modalIsOpen4} onRequestClose={() => setModalIsOpen4(false)}
+          style={{
+            content: {
+              position: 'absolute',
+              top: '400px',
+              left: '600px',
+              width: '343px',
+              height: '146px',
+              border: '1px solid #075995',
+              overflow: 'auto',
+              WebkitOverflowScrolling: 'touch',
+              borderRadius: '20px',
+              outline: 'none',
+              padding: '20px'
+            }
+          }}>
+            <ModalContent>멋사 세션</ModalContent>
+            <ModalSchedule>7월 8일 (화요일) - 7월 8일 (금요일)</ModalSchedule>
+            <ModalGroup>그룹</ModalGroup>
+            <ModalTime src={"/img/time.png"} alt="time" />
+            <ModalBox src={"/img/rectangle.png"} alt="rectangle" />
+            <ModalColor src={"/img/teambox.png"} alt="color" />
+            <ModalText>해커톤 이성 TEAM</ModalText>
+            <ModalDelete>삭제</ModalDelete>
+            <ModalSave src={"/img/save.png"} alt="save" onClick={() => setModalIsOpen4(false)}/>
+          </Modal>
+
+          <Modal isOpen={modalIsOpen5} onRequestClose={() => setModalIsOpen5(false)}
+          style={{
+            content: {
+              position: 'absolute',
+              top: '400px',
+              left: '600px',
+              width: '343px',
+              height: '146px',
+              border: '1px solid #075995',
+              overflow: 'auto',
+              WebkitOverflowScrolling: 'touch',
+              borderRadius: '20px',
+              outline: 'none',
+              padding: '20px'
+            }
+          }}>
+            <ModalContent>계절학기 시험기간</ModalContent>
+            <ModalSchedule>7월 18일 (월요일) - 7월 20일 (수요일)</ModalSchedule>
+            <ModalGroup>그룹</ModalGroup>
+            <ModalTime src={"/img/time.png"} alt="time" />
+            <ModalBox src={"/img/rectangle.png"} alt="rectangle" />
+            <ModalColor src={"/img/teambox.png"} alt="color" />
+            <ModalText>해커톤 이성 TEAM</ModalText>
+            <ModalDelete>삭제</ModalDelete>
+            <ModalSave src={"/img/save.png"} alt="save" onClick={() => setModalIsOpen5(false)}/>
           </Modal>
         </CalendarBox>
       </Container>

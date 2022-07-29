@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import Modal from 'react-modal';
+import Modal from "react-modal";
 
 // 상단바 전체 박스
 const Bar = styled.div`
@@ -25,7 +25,7 @@ const Content = styled.div`
   left: 1052px;
   top: 42px;
 
-  font-family: 'Noto Sans KR';
+  font-family: "Noto Sans KR";
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -74,7 +74,7 @@ const ModalContent = styled.div`
   left: 105px;
   top: 30px;
 
-  font-family: 'Noto Sans KR';
+  font-family: "Noto Sans KR";
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -84,45 +84,49 @@ const ModalContent = styled.div`
   color: #706363;
 `;
 
-
-
 // 상단바 컴포넌트
 const LogInHeader = () => {
-
   const navigate = useNavigate();
 
   const goToHome = () => {
     navigate("/");
-  }
+  };
 
-  const[IsOpen, setIsOpen] = useState(false);
+  const [IsOpen, setIsOpen] = useState(false);
 
   return (
     <div>
       <Bar>
         <Logo onClick={goToHome} src={"/img/logo.png"} alt="ASSEMBLE" />
         <Content>최재오 님 환영합니다</Content>
-        <Alarm1 src={"/img/alarm.png"} alt="alarm" onClick={() => setIsOpen(true)}/>
+        <Alarm1
+          src={"/img/alarm.png"}
+          alt="alarm"
+          onClick={() => setIsOpen(true)}
+        />
         <Alarm2 src={"/img/alarm_ring.png"} alt="alarm" />
         <Alarm3 src={"/img/alarm_bar.png"} alt="alarm" />
         <Profile src={"/img/profile.png"} alt="profile" />
-        <Modal isOpen={IsOpen} onRequestClose={() => setIsOpen(false)}
-        style={{
-          content: {
-            position: 'absolute',
-            top: '80px',
-            left: '1120px',
-            width: '300px',
-            height: '35px',
-            border: '1px solid #ccc',
-            background: '#fff',
-            overflow: 'auto',
-            WebkitOverflowScrolling: 'touch',
-            borderRadius: '10px',
-            outline: 'none',
-            padding: '20px'
-          }
-        }}>
+        <Modal
+          isOpen={IsOpen}
+          onRequestClose={() => setIsOpen(false)}
+          style={{
+            content: {
+              position: "absolute",
+              top: "80px",
+              left: "1120px",
+              width: "300px",
+              height: "35px",
+              border: "1px solid #ccc",
+              background: "#fff",
+              overflow: "auto",
+              WebkitOverflowScrolling: "touch",
+              borderRadius: "10px",
+              outline: "none",
+              padding: "20px",
+            },
+          }}
+        >
           <ModalContent>새 알림이 없습니다</ModalContent>
         </Modal>
       </Bar>

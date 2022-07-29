@@ -8,6 +8,7 @@ import MakeToDo from "./component/UserPageComponent/MakeToDo";
 import VersionToolPage from "./pages/VersionToolPage";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import TeamPage from "./pages/TeamPage";
+import Modal from "react-modal";
 
 function App() {
   // api 주소
@@ -38,5 +39,7 @@ function App() {
     </BrowserRouter>
   );
 }
+
+Modal.setAppElement("#root");
 
 export default App;

@@ -12,18 +12,6 @@ const Container = styled.div`
   font-style: normal;
 `;
 
-// '개인 캘린더' 텍스트
-const ListText = styled.div`
-  width: 310px;
-  height: 31.53px;
-
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 35px;
-  color: #075995;
-  padding-left: 20px;
-`;
-
 // '편집' 텍스트
 const ModifyText = styled.div`
   width: 830px;
@@ -187,7 +175,6 @@ const MiniCalendar = ({ color, length, hight, changecolor }) => {
   return (
     <>
       <Container>
-        <ListText>개인 캘린더</ListText>
         <ModifyText onClick={onClickModify}>
           {modify ? "저장" : "편집"}
         </ModifyText>

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import MiniCalendar from './MiniCalendar';
 
 
 // 메인 컨테이너
@@ -162,6 +163,12 @@ const CalenderContainer =styled.div`
 
 `;
 
+// 미니 컨테이너
+const MiniContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
 const TeamPageComponent = () => {
 
   const navigate = useNavigate();
@@ -244,6 +251,9 @@ const TeamPageComponent = () => {
         </GroupBox>
         <CalenderContainer>
           <HeadText>캘린더</HeadText>
+          <MiniContainer>
+            <MiniCalendar />
+          </MiniContainer>
         </CalenderContainer> 
       </Container>
     </div>

@@ -1,73 +1,99 @@
-import React, {useState} from "react";
+import React from "react";
 import styled from "styled-components";
+import { useState } from "react";
+import {TiArrowSortedDown} from "react-icons/ti";
 import Modal from 'react-modal';
 
 // Calender 전체 박스
 const Container = styled.div`
   width: 860px;
   height: 950px;
-`;
-
-// 개인 캘린더
-const Personal = styled.div`
-  position: absolute;
-  width: 130px;
-  height: 35px;
-  left: 649px;
-  top: 165px;
 
   font-family: "Noto Sans KR";
   font-style: normal;
+`;
+
+// '개인 캘린더' 텍스트
+const ListText = styled.div`
+  width: 310px;
+  height: 31.53px;
+
   font-weight: 700;
   font-size: 24px;
   line-height: 35px;
   color: #075995;
+  padding-left: 20px;
+`;
+
+// '편집' 텍스트
+const ModifyText = styled.div`
+  width: 830px;
+  height: 23.42px;
+
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 26px;
+  color: #0a75be;
+  text-align: end;
+  padding-bottom: 5px;
 `;
 
 // 캘린더 박스
-const Box = styled.div`
-  position: absolute;
+const CalendarBox = styled.div`
   width: 860px;
-  height: 848px;
+  height: 825px;
+  
   background: #ffffff;
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.25);
   border-radius: 30px;
-  top: 227px;
-  left: 627px;
+  padding-top: 25px;
+  padding-left: 20px;
 `;
 
-// 날짜 선택
-const SelectDate = styled.div`
-  position: absolute;
-  width: 110px;
-  height: 29px;
-  left: 31px;
-  top: 24px;
+// 날짜 선택 박스
+const SelectDateBox = styled.div`
+  display: flex;
+`;
 
-  font-family: "Noto Sans KR";
-  font-style: normal;
-  font-weight: 700;
+const Text = styled.div`
+  width: 100px;
+  height: 29px;
+
+  font-weight: 400;
   font-size: 20px;
   line-height: 29px;
-  color: #000000;
+
+  padding-bottom: 15px;
+
+  color: black;
 `;
 
-// 날짜 선택 버튼
-const Triangle = styled.img`
-  position: absolute;
-  width: 15px;
-  height: 15px;
-  left: 140px;
-  top: 30px;
+const DayBox = styled.div`
+  display: flex;
+  width: 800px;
+  height: 30px;
+  margin-top: 10px;
+  margin-left: 15px;
+
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const DateBox = styled.div`
+  display: flex;
+  width: 800px;
+  height: 35px;
+  margin-top: 80px;
+  margin-left: 15px;
+
+  align-items: center;
+  justify-content: space-between;
 `;
 
 // 요일(요일 only)
 const Days = styled.div`
-  position: absolute;
   width: 17px;
   height: 26px;
-  left: ${(props) => props.length || "65px;"};
-  top: ${(props) => props.height || "92px;"};
 
   font-family: "Noto Sans KR";
   font-style: normal;
@@ -78,13 +104,10 @@ const Days = styled.div`
   color: ${(props) => props.color || "#FF3C3C"};
 `;
 
-// 요일(7월 날짜 및 숫자)
-const Days2 = styled.div`
-  position: absolute;
+// 요일(7월 날짜 숫자)
+const Dates = styled.div`
   width: 17px;
   height: 26px;
-  left: ${(props) => props.length || "65px;"};
-  top: ${(props) => props.height || "92px;"};
 
   font-family: "Noto Sans KR";
   font-style: normal;
@@ -93,161 +116,54 @@ const Days2 = styled.div`
   line-height: 26px;
   text-align: center;
   color: ${(props) => props.color || "#FF3C3C"};
-
-  :hover {
-    background-color: #87ceeb;
-    transition: 0.3s;
-  }
-  transition: 0.3s;
 `;
 
-// 스케쥴 일정1
-const ScheduleBox1 = styled.img`
+// 스케쥴 짧은 박스 
+const ScheduleBox = styled.div`
   position: absolute;
-  background: #b282cc;
-  border-radius: 6px;
   width: 104px;
   height: 23px;
-  top: 392px;
-  left: 305px;
-`;
-
-// 스케쥴 일정2
-const ScheduleBox2 = styled.img`
-  position: absolute;
-  background: #b282cc;
   border-radius: 6px;
-  width: 104px;
-  height: 23px;
-  top: 392px;
-  left: 543px;
+  background-color: ${(props) => props.color || "#B282CC"};
+  margin-left: ${(props) => props.length || "100px"};
+  padding-top: ${(props) => props.hight || "0px"};
 `;
 
-// 스케쥴 일정3
-const ScheduleBox3 = styled.img`
+// 스케쥴 긴 박스 
+const ScheduleBox2 = styled.div`
   position: absolute;
-  background: #f6cbd1;
+  width: 370px;
+  height: 23px;
   border-radius: 6px;
-  width: 342px;
-  height: 23px;
-  top: 507px;
-  left: 185px;
+  background-color: ${(props) => props.color || "#B282CC"};
+  margin-left: ${(props) => props.length || "100px"};
+  padding-top: ${(props) => props.hight || "0px"};
 `;
 
-// 스케쥴 일정4
-const ScheduleBox4 = styled.img`
-  position: absolute;
-  background: #f1a23e;
-  border-radius: 6px;
-  width: 104px;
-  height: 23px;
-  top: 305px;
-  left: 187px;
+// 스케쥴 내용 작성 (짧은 박스)
+const SceduleText = styled.div`
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #FFFFFF;
+
+  padding-left: 17px;
+  padding-top: 3px;
 `;
 
-// 스케쥴 일정5
-const ScheduleBox5 = styled.img`
-  position: absolute;
-  background: #f1a23e;
-  border-radius: 6px;
-  width: 104px;
-  height: 23px;
-  top: 418px;
-  left: 543px;
-`;
+// 스케쥴 내용 작성 (긴 박스)
+const SceduleText2 = styled.div`
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #FFFFFF;
 
-// 스케쥴 일정6
-const ScheduleBox6 = styled.img`
-  position: absolute;
-  background: #ff3636;
-  border-radius: 6px;
-  width: 104px;
-  height: 23px;
-  top: 280px;
-  left: 187px;
-`;
-
-// 스케쥴 일정7
-const ScheduleBox7 = styled.img`
-  position: absolute;
-  background: #ff3636;
-  border-radius: 6px;
-  width: 104px;
-  height: 23px;
-  top: 280px;
-  left: 665px;
-`;
-
-// 활동 내용1
-const Schedule1 = styled.img`
-  position: absolute;
-  width: 47px;
-  height: 15px;
-  top: 283px;
-  left: 200px;
-`;
-
-// 활동 내용2
-const Schedule2 = styled.img`
-  position: absolute;
-  width: 47px;
-  height: 15px;
-  top: 284px;
-  left: 677px;
-`;
-
-// 활동 내용3
-const Schedule3 = styled.img`
-  position: absolute;
-  width: 65px;
-  height: 17px;
-  top: 308px;
-  left: 198px;
-`;
-
-// 활동 내용4
-const Schedule4 = styled.img`
-  position: absolute;
-  width: 65px;
-  height: 17px;
-  top: 421px;
-  left: 556px;
-`;
-
-// 활동 내용5
-const Schedule5 = styled.img`
-  position: absolute;
-  width: 65px;
-  height: 15px;
-  top: 396px;
-  left: 316px;
-`;
-
-// 활동 내용6
-const Schedule6 = styled.img`
-  position: absolute;
-  width: 65px;
-  height: 15px;
-  top: 396px;
-  left: 555px;
-`;
-
-// 활동 내용7
-const Schedule7 = styled.img`
-  position: absolute;
-  width: 100px;
-  height: 17px;
-  top: 510px;
-  left: 240px;
-`;
-
-// 현재 날짜 표시
-const Circle = styled.img`
-  position: absolute;
-  width: 32px;
-  height: 32px;
-  left: 773px;
-  top: 587px;
+  padding-left: 100px;
+  padding-top: 3px;
 `;
 
 // 팝업 창 모임 큰 제목
@@ -364,185 +280,109 @@ const ModalSave = styled.img`
   height: 30px;
 `;
 
-const Calender = ({ color, length, height }) => {
+const Calender = ({ color, length, hight }) => {
 
+  const [modify, setModify] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const onClickModify = () => {
+    setModify(!modify);
+  };
 
   return (
     <>
       <Container>
-        <Personal>개인 캘린더</Personal>
-        <Box>
-          <SelectDate>2022년 7월</SelectDate>
-          <Triangle src={"/img/triangle.png"} alt="triangle" />
-          <Days>일</Days>
-          <Days color={"black"} length={"184px"}>
-            월
-          </Days>
-          <Days color={"black"} length={"303px"}>
-            화
-          </Days>
-          <Days color={"black"} length={"422px"}>
-            수
-          </Days>
-          <Days color={"black"} length={"541px"}>
-            목
-          </Days>
-          <Days color={"black"} length={"660px"}>
-            금
-          </Days>
-          <Days color={"blue"} length={"779px"}>
-            토
-          </Days>
-          <Days
-            color={"rgba(255, 59, 59, 0.3)"}
-            length={"65px"}
-            height={"140px"}
-          >
-            26
-          </Days>
-          <Days color={"rgba(0, 0, 0, 0.3)"} length={"184px"} height={"140px"}>
-            27
-          </Days>
-          <Days color={"rgba(0, 0, 0, 0.3)"} length={"303px"} height={"140px"}>
-            28
-          </Days>
-          <Days color={"rgba(0, 0, 0, 0.3)"} length={"422px"} height={"140px"}>
-            29
-          </Days>
-          <Days color={"rgba(0, 0, 0, 0.3)"} length={"541px"} height={"140px"}>
-            30
-          </Days>
-          <Days2 color={"black"} length={"660px"} height={"140px"}>
-            1
-          </Days2>
-          <Days2 color={"blue"} length={"779px"} height={"140px"}>
-            2
-          </Days2>
-          <Days2 color={"red"} length={"65px"} height={"253px"}>
-            3
-          </Days2>
-          <Days2 color={"black"} length={"184px"} height={"253px"}>
-            4
-          </Days2>
-          <Days2 color={"black"} length={"303px"} height={"253px"}>
-            5
-          </Days2>
-          <Days2 color={"black"} length={"422px"} height={"253px"}>
-            6
-          </Days2>
-          <Days2 color={"black"} length={"541px"} height={"253px"}>
-            7
-          </Days2>
-          <Days2 color={"black"} length={"660px"} height={"253px"}>
-            8
-          </Days2>
-          <Days2 color={"blue"} length={"779px"} height={"253px"}>
-            9
-          </Days2>
-          <Days2 color={"red"} length={"65px"} height={"366px"}>
-            10
-          </Days2>
-          <Days2 color={"black"} length={"184px"} height={"366px"}>
-            11
-          </Days2>
-          <Days2 color={"black"} length={"303px"} height={"366px"}>
-            12
-          </Days2>
-          <Days2 color={"black"} length={"422px"} height={"366px"}>
-            13
-          </Days2>
-          <Days2 color={"black"} length={"541px"} height={"366px"}>
-            14
-          </Days2>
-          <Days2 color={"black"} length={"660px"} height={"366px"}>
-            15
-          </Days2>
-          <Days2 color={"blue"} length={"779px"} height={"366px"}>
-            16
-          </Days2>
-          <Days2 color={"red"} length={"65px"} height={"479px"}>
-            17
-          </Days2>
-          <Days2 color={"black"} length={"184px"} height={"479px"}>
-            18
-          </Days2>
-          <Days2 color={"black"} length={"303px"} height={"479px"}>
-            19
-          </Days2>
-          <Days2 color={"black"} length={"422px"} height={"479px"}>
-            20
-          </Days2>
-          <Days2 color={"black"} length={"541px"} height={"479px"}>
-            21
-          </Days2>
-          <Days2 color={"black"} length={"660px"} height={"479px"}>
-            22
-          </Days2>
-          <Days2 color={"blue"} length={"779px"} height={"479px"}>
-            23
-          </Days2>
-          <Days2 color={"red"} length={"65px"} height={"592px"}>
-            24
-          </Days2>
-          <Days2 color={"black"} length={"184px"} height={"592px"}>
-            25
-          </Days2>
-          <Days2 color={"black"} length={"303px"} height={"592px"}>
-            26
-          </Days2>
-          <Days2 color={"black"} length={"422px"} height={"592px"}>
-            27
-          </Days2>
-          <Days2 color={"black"} length={"541px"} height={"592px"}>
-            28
-          </Days2>
-          <Days2 color={"black"} length={"660px"} height={"592px"}>
-            29
-          </Days2>
-          <Days2 color={"blue"} length={"779px"} height={"592px"}>
-            30
-          </Days2>
-          <Days2 color={"red"} length={"65px"} height={"705px"}>
-            31
-          </Days2>
-          <Days color={"rgba(0, 0, 0, 0.3)"} length={"184px"} height={"705px"}>
-            1
-          </Days>
-          <Days color={"rgba(0, 0, 0, 0.3)"} length={"303px"} height={"705px"}>
-            2
-          </Days>
-          <Days color={"rgba(0, 0, 0, 0.3)"} length={"422px"} height={"705px"}>
-            3
-          </Days>
-          <Days color={"rgba(0, 0, 0, 0.3)"} length={"541px"} height={"705px"}>
-            4
-          </Days>
-          <Days color={"rgba(0, 0, 0, 0.3)"} length={"660px"} height={"705px"}>
-            5
-          </Days>
-          <Days
-            color={"rgba(7, 89, 149, 0.3)"}
-            length={"779px"}
-            height={"705px"}
-          >
-            6
-          </Days>
-          <ScheduleBox1 src={"/img/purple.png"} alt="purple" onClick={() => setModalIsOpen(true)}/>
-          <ScheduleBox2 src={"/img/purple.png"} alt="purple" onClick={() => setModalIsOpen(true)}/>
-          <ScheduleBox3 src={"/img/peach.png"} alt="peach" onClick={() => setModalIsOpen(true)}/>
-          <ScheduleBox4 src={"/img/orange.png"} alt="orange" onClick={() => setModalIsOpen(true)}/>
-          <ScheduleBox5 src={"/img/orange.png"} alt="orange" onClick={() => setModalIsOpen(true)}/>
-          <ScheduleBox6 src={"/img/red.png"} alt="red" onClick={() => setModalIsOpen(true)}/>
-          <ScheduleBox7 src={"/img/red.png"} alt="red" onClick={() => setModalIsOpen(true)}/>
-          <Schedule1 src={"/img/content1.png"} alt="likelion" />
-          <Schedule2 src={"/img/content1.png"} alt="likelion" />
-          <Schedule3 src={"/img/content2.png"} alt="friends" />
-          <Schedule4 src={"/img/content2.png"} alt="friends" />
-          <Schedule5 src={"/img/content3.png"} alt="hackathon" />
-          <Schedule6 src={"/img/content3.png"} alt="hackathon" />
-          <Schedule7 src={"/img/content4.png"} alt="testtime" />
-          <Circle src={"/img/circle.png"} alt="circle" />
+        <ListText>개인 캘린더</ListText>
+        <ModifyText onClick={onClickModify}>
+          {modify ? "저장" : "편집"}
+        </ModifyText>
+        <CalendarBox>
+          <SelectDateBox>
+            <Text style={{ width: "110px" }}>2022년 7월</Text>
+              <TiArrowSortedDown
+                style={{ paddingTop: "0px" }}
+                size={30}>
+              </TiArrowSortedDown>
+          </SelectDateBox>
+          <DayBox>
+            <Days color="red">일</Days>
+            <Days color="black">월</Days>
+            <Days color="black">화</Days>
+            <Days color="black">수</Days>
+            <Days color="black">목</Days>
+            <Days color="black">금</Days>
+            <Days color="blue">토</Days>
+          </DayBox>
+          <DateBox>
+            <Dates color= "rgba(255, 59, 59, 0.3)">26</Dates>
+            <Dates color= "rgba(0, 0, 0, 0.3)">27</Dates>
+            <Dates color= "rgba(0, 0, 0, 0.3)">28</Dates>
+            <Dates color= "rgba(0, 0, 0, 0.3)">29</Dates>
+            <Dates color= "rgba(0, 0, 0, 0.3)">30</Dates>
+            <Dates color= "black">1</Dates>
+            <Dates color= "blue">2</Dates>
+          </DateBox>
+          <DateBox>
+            <Dates color= "red">3</Dates>
+            <Dates color= "black">4</Dates>
+            <Dates color= "black">5</Dates>
+            <Dates color= "black">6</Dates>
+            <Dates color= "black">7</Dates>
+            <Dates color= "black">8</Dates>
+            <Dates color= "blue">9</Dates>
+          </DateBox>
+          <ScheduleBox color="#F1A23E" length="148px" hight="0px">
+            <SceduleText>친구 약속</SceduleText>
+          </ScheduleBox>
+          <ScheduleBox color="#FF3636" length="670px" hight="0px">
+            <SceduleText>멋사 세션</SceduleText>
+          </ScheduleBox>
+          <DateBox>
+            <Dates color= "red">10</Dates>
+            <Dates color= "black">11</Dates>
+            <Dates color= "black">12</Dates>
+            <Dates color= "balck">13</Dates>
+            <Dates color= "black">14</Dates>
+            <Dates color= "black">15</Dates>
+            <Dates color= "blue">16</Dates>
+          </DateBox>
+          <ScheduleBox color="#B282CC" length="278px" hight="0px">
+            <SceduleText>해커톤 회의</SceduleText>
+          </ScheduleBox>
+          <ScheduleBox color="#B282CC" length="538px" hight="0px">
+            <SceduleText>해커톤 회의</SceduleText>
+          </ScheduleBox>
+          <DateBox>
+            <Dates color= "red">17</Dates>
+            <Dates color= "black">18</Dates>
+            <Dates color= "black">19</Dates>
+            <Dates color= "balck">20</Dates>
+            <Dates color= "black">21</Dates>
+            <Dates color= "black">22</Dates>
+            <Dates color= "blue">23</Dates>
+          </DateBox>
+          <ScheduleBox2 color="#F6CBD1" length="145px" hight="0px">
+            <SceduleText2>계절학기 시험기간</SceduleText2>
+          </ScheduleBox2>
+          <DateBox>
+            <Dates color= "red">24</Dates>
+            <Dates color= "black">25</Dates>
+            <Dates color= "black">26</Dates>
+            <Dates color= "balck">27</Dates>
+            <Dates color= "black">28</Dates>
+            <Dates color= "black">29</Dates>
+            <Dates color= "blue">30</Dates>
+          </DateBox>
+          <DateBox>
+            <Dates color= "red">31</Dates>
+            <Dates color= "rgba(0, 0, 0, 0.3)">1</Dates>
+            <Dates color= "rgba(0, 0, 0, 0.3)">2</Dates>
+            <Dates color= "rgba(0, 0, 0, 0.3)">3</Dates>
+            <Dates color= "rgba(0, 0, 0, 0.3)">4</Dates>
+            <Dates color= "rgba(0, 0, 0, 0.3)">5</Dates>
+            <Dates color= "rgba(7, 89, 149, 0.3)">6</Dates>
+          </DateBox>
+          
           <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}
           style={{
             content: {
@@ -569,7 +409,7 @@ const Calender = ({ color, length, height }) => {
             <ModalDelete>삭제</ModalDelete>
             <ModalSave src={"/img/save.png"} alt="save" onClick={() => setModalIsOpen(false)}/>
           </Modal>
-        </Box>
+        </CalendarBox>
       </Container>
     </>
   );

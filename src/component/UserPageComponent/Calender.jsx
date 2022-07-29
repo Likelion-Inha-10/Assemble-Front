@@ -144,6 +144,12 @@ const ScheduleBox2 = styled.div`
   background-color: ${(props) => props.color || "#B282CC"};
   margin-left: ${(props) => props.length || "100px"};
   padding-top: ${(props) => props.hight || "0px"};
+
+  :hover{
+    background-color: ${(props) => props.changecolor || "red"};
+    transition: 0.3s;
+  }
+  transition: 0.3s;
 `;
 
 // 스케쥴 내용 작성 (짧은 박스)
@@ -337,10 +343,10 @@ const Calender = ({ color, length, hight, changecolor }) => {
             <Dates color= "black">8</Dates>
             <Dates color= "blue">9</Dates>
           </DateBox>
-          <ScheduleBox color="#F1A23E" length="148px" hight="0px" changecolor="">
+          <ScheduleBox color="#F1A23E" length="148px" hight="0px" changecolor="#FB8C00">
             <SceduleText>친구 약속</SceduleText>
           </ScheduleBox>
-          <ScheduleBox color="#FF3636" length="670px" hight="0px">
+          <ScheduleBox color="#8280FF" length="670px" hight="0px" changecolor="#0500FF">
             <SceduleText>멋사 세션</SceduleText>
           </ScheduleBox>
           <DateBox>
@@ -352,10 +358,10 @@ const Calender = ({ color, length, hight, changecolor }) => {
             <Dates color= "black">15</Dates>
             <Dates color= "blue">16</Dates>
           </DateBox>
-          <ScheduleBox color="#B282CC" length="278px" hight="0px">
+          <ScheduleBox color="#B282CC" length="278px" hight="0px" changecolor="#AC26F5">
             <SceduleText>해커톤 회의</SceduleText>
           </ScheduleBox>
-          <ScheduleBox color="#B282CC" length="538px" hight="0px">
+          <ScheduleBox color="#B282CC" length="538px" hight="0px" changecolor="#AC26F5">
             <SceduleText>해커톤 회의</SceduleText>
           </ScheduleBox>
           <DateBox>
@@ -367,7 +373,7 @@ const Calender = ({ color, length, hight, changecolor }) => {
             <Dates color= "black">22</Dates>
             <Dates color= "blue">23</Dates>
           </DateBox>
-          <ScheduleBox2 color="#F6CBD1" length="145px" hight="0px">
+          <ScheduleBox2 color="#F6CBD1" length="145px" hight="0px" changecolor="#FF647A">
             <SceduleText2>계절학기 시험기간</SceduleText2>
           </ScheduleBox2>
           <DateBox>

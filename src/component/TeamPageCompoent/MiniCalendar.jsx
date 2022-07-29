@@ -13,6 +13,18 @@ const Container = styled.div`
   font-style: normal;
 `;
 
+// '개인 캘린더' 텍스트
+const ListText = styled.div`
+  width: 310px;
+  height: 31.53px;
+
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 35px;
+  color: #075995;
+  padding-left: 20px;
+`;
+
 // '편집' 텍스트
 const ModifyText = styled.div`
   width: 830px;
@@ -132,6 +144,12 @@ const ScheduleBox2 = styled.div`
   background-color: ${(props) => props.color || "#B282CC"};
   margin-left: ${(props) => props.length || "100px"};
   padding-top: ${(props) => props.hight || "0px"};
+
+  :hover{
+    background-color: ${(props) => props.changecolor || "red"};
+    transition: 0.3s;
+  }
+  transition: 0.3s;
 `;
 
 // 스케쥴 내용 작성 (짧은 박스)
@@ -160,122 +178,7 @@ const SceduleText2 = styled.div`
   padding-top: 3px;
 `;
 
-// 팝업 창 모임 큰 제목
-const ModalContent = styled.div`
-  position: absolute;
-  left: 35px;
-  top: 35px;
-
-  font-family: 'Noto Sans KR';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 17px;
-  text-align: right;
-
-  color: #706363;
-`;
-
-// 팝업 창 날짜
-const ModalSchedule = styled.div`
-position: absolute;
-width: 193px;
-height: 17px;
-top: 70px;
-left: 155px;
-
-font-family: 'Noto Sans KR';
-font-style: normal;
-font-weight: 400;
-font-size: 12px;
-line-height: 17px;
-
-color: #000000;
-`;
-
-// 팝업 창 그룹
-const ModalGroup = styled.div`
-position: absolute;
-width: 23px;
-height: 17px;
-top: 105px;
-left: 37px;
-
-font-family: 'Noto Sans KR';
-font-style: normal;
-font-weight: 400;
-font-size: 12px;
-line-height: 17px;
-
-color: #000000;
-`
-
-// 팝업 창 시계 이미지
-const ModalTime = styled.img`
-  position: absolute;
-  left: 39px;
-  top: 72px;
-  width: 15px;
-  height: 15px;
-`;
-
-// 팝업 창 모임 작성 칸
-const ModalBox = styled.img`
-  position: absolute;
-  left: 155px;
-  top: 100px;
-  width: 172px;
-  height: 25px;
-`;
-
-// 팝업 창 캘린더 하이라이트 색
-const ModalColor = styled.img`
-  position: absolute;
-  left: 165px;
-  top: 107px;
-  width: 11px;
-  height: 11px;
-`;
-
-// 팝업 창 그룹 이름
-const ModalText = styled.div`
-  position: absolute;
-  left: 200px;
-  top: 105px;
-  font-family: 'Noto Sans KR';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 17px;
-
-  color: #000000;
-`;
-
-// 팝업 창 삭제 칸
-const ModalDelete = styled.div`
-  position: absolute;
-  left: 250px;
-  top: 153px;
-  font-family: 'Noto Sans KR';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 17px;
-
-  color: red;
-`;
-
-// 팝업 창 저장 버튼
-const ModalSave = styled.img`
-  position: absolute;
-  left: 300px;
-  top: 145px;
-  width: 56px;
-  height: 30px;
-`;
-
-const Calender = ({ color, length, hight, changecolor }) => {
-
+const MiniCalendar = ({ color, length, hight, changecolor }) => {
   const [modify, setModify] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -286,6 +189,7 @@ const Calender = ({ color, length, hight, changecolor }) => {
   return (
     <>
       <Container>
+        <ListText>개인 캘린더</ListText>
         <ModifyText onClick={onClickModify}>
           {modify ? "저장" : "편집"}
         </ModifyText>
@@ -324,10 +228,10 @@ const Calender = ({ color, length, hight, changecolor }) => {
             <Dates color= "black">8</Dates>
             <Dates color= "blue">9</Dates>
           </DateBox>
-          <ScheduleBox color="#F1A23E" length="148px" hight="0px" changecolor="">
+          <ScheduleBox color="#F1A23E" length="148px" hight="0px" changecolor="#FB8C00">
             <SceduleText>친구 약속</SceduleText>
           </ScheduleBox>
-          <ScheduleBox color="#FF3636" length="670px" hight="0px">
+          <ScheduleBox color="#8280FF" length="670px" hight="0px" changecolor="#0500FF">
             <SceduleText>멋사 세션</SceduleText>
           </ScheduleBox>
           <DateBox>
@@ -339,10 +243,10 @@ const Calender = ({ color, length, hight, changecolor }) => {
             <Dates color= "black">15</Dates>
             <Dates color= "blue">16</Dates>
           </DateBox>
-          <ScheduleBox color="#B282CC" length="278px" hight="0px">
+          <ScheduleBox color="#B282CC" length="278px" hight="0px" changecolor="#AC26F5">
             <SceduleText>해커톤 회의</SceduleText>
           </ScheduleBox>
-          <ScheduleBox color="#B282CC" length="538px" hight="0px">
+          <ScheduleBox color="#B282CC" length="538px" hight="0px" changecolor="#AC26F5">
             <SceduleText>해커톤 회의</SceduleText>
           </ScheduleBox>
           <DateBox>
@@ -354,7 +258,7 @@ const Calender = ({ color, length, hight, changecolor }) => {
             <Dates color= "black">22</Dates>
             <Dates color= "blue">23</Dates>
           </DateBox>
-          <ScheduleBox2 color="#F6CBD1" length="145px" hight="0px">
+          <ScheduleBox2 color="#F6CBD1" length="145px" hight="0px" changecolor="#FF647A">
             <SceduleText2>계절학기 시험기간</SceduleText2>
           </ScheduleBox2>
           <DateBox>
@@ -375,37 +279,10 @@ const Calender = ({ color, length, hight, changecolor }) => {
             <Dates color= "rgba(0, 0, 0, 0.3)">5</Dates>
             <Dates color= "rgba(7, 89, 149, 0.3)">6</Dates>
           </DateBox>
-          
-          <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}
-          style={{
-            content: {
-              position: 'absolute',
-              top: '400px',
-              left: '600px',
-              width: '343px',
-              height: '146px',
-              border: '1px solid #075995',
-              overflow: 'auto',
-              WebkitOverflowScrolling: 'touch',
-              borderRadius: '20px',
-              outline: 'none',
-              padding: '20px'
-            }
-          }}>
-            <ModalContent>해커톤 회의</ModalContent>
-            <ModalSchedule>7월 14일 (목요일) - 7월 14일 (목요일)</ModalSchedule>
-            <ModalGroup>그룹</ModalGroup>
-            <ModalTime src={"/img/time.png"} alt="time" />
-            <ModalBox src={"/img/rectangle.png"} alt="rectangle" />
-            <ModalColor src={"/img/pulplebox.png"} alt="color" />
-            <ModalText>해커톤 이성 TEAM</ModalText>
-            <ModalDelete>삭제</ModalDelete>
-            <ModalSave src={"/img/save.png"} alt="save" onClick={() => setModalIsOpen(false)}/>
-          </Modal>
-        </CalendarBox>
+          </CalendarBox>
       </Container>
     </>
   );
 };
 
-export default Calender;
+export default MiniCalendar;

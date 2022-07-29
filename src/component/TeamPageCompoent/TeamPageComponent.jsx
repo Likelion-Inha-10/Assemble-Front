@@ -255,7 +255,7 @@ const TeamPageComponent = () => {
           <TeamContainer>
             <TeamBox>F</TeamBox>
             <TeamBox>B</TeamBox>
-            <TeamBox>D</TeamBox>
+            <TeamBox>E</TeamBox>
           </TeamContainer>
         </GroupBox>
         <CalenderContainer>

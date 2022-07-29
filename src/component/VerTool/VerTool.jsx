@@ -4,6 +4,7 @@ import {AiFillCaretUp} from "react-icons/ai";
 import { AiFillCaretDown, AiOutlineDoubleRight } from "react-icons/ai";
 import { NavBarBox, NavLink } from '../NavBar';
 import TeamProfile from '../TeamProfile';
+import { useNavigate } from 'react-router-dom';
 
 // 중간에 박스들을 중앙에 배열하기 위한 Container
 const MiddleContainer = styled.div`
@@ -409,15 +410,23 @@ const VerTool = () => {
     setUpdown(updown => !updown);
   }
 
+  const navigate = useNavigate();
+  const goToMyPage = () =>{
+    navigate('/userpage');
+  }
+  const goToTeampage = () =>{
+    navigate('/teampage');
+  }
+
   return (
     <div>
       <TeamProfile />
       <hr className='tophr'></hr>
       <MiddleContainer>
         <NavBarBox>
-          <NavLink>마이페이지</NavLink>
+          <NavLink onClick={goToMyPage}>마이페이지</NavLink>
           <NavLink><AiOutlineDoubleRight /></NavLink>
-          <NavLink>멋쟁이사자처럼 인하대학교 해커톤 이성팀</NavLink>
+          <NavLink onClick={goToTeampage}>멋쟁이사자처럼 인하대학교 해커톤 이성팀</NavLink>
           <NavLink><AiOutlineDoubleRight /></NavLink>
           <NavLink style={{color:'#075995'}}>프로젝트</NavLink>
         </NavBarBox>

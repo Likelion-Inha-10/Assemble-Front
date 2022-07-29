@@ -358,7 +358,7 @@ const Calender = ({ color, length, hight, changecolor }) => {
             <Dates color= "black">15</Dates>
             <Dates color= "blue">16</Dates>
           </DateBox>
-          <ScheduleBox color="#B282CC" length="278px" hight="0px" changecolor="#AC26F5">
+          <ScheduleBox color="#B282CC" length="278px" hight="0px" changecolor="#AC26F5" onClick={() => setModalIsOpen(true)}>
             <SceduleText>해커톤 회의</SceduleText>
           </ScheduleBox>
           <ScheduleBox color="#B282CC" length="538px" hight="0px" changecolor="#AC26F5">

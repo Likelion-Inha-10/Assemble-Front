@@ -4,7 +4,7 @@ import {AiFillCaretUp} from "react-icons/ai";
 import { AiFillCaretDown, AiOutlineDoubleRight } from "react-icons/ai";
 import { NavBarBox, NavLink } from '../NavBar';
 import TeamProfile from '../TeamProfile';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 // 중간에 박스들을 중앙에 배열하기 위한 Container
 const MiddleContainer = styled.div`
@@ -426,6 +426,8 @@ const VerTool = () => {
     navigate('/teampage');
   }
 
+
+
   return (
     <div>
       <TeamProfile />
@@ -491,51 +493,57 @@ const VerTool = () => {
           <UploadButton src={"/img/UploadButton.png"} />
         </SmallContainer>
         <FileContainer>
+         <a href='https://github.com/jschan0911/OOP1/files/9221853/1.xlsx'>
          <File>
-          <TinyContainer>
-              <FileName>Assemble 기획 아이디어 .txt</FileName>
-              <Comment>캘린더 내용 추가했습니다.</Comment>
-            </TinyContainer>
-            <SmallContainer>
-              <TinyCommitInfoContainer>
-                <SmallCommitter>최재오</SmallCommitter>
-                <TinyCommitTimeContainer>
-                  <SmallCommitDay> 2022-07-27</SmallCommitDay>
-                  <SmallCommitTime>오전 4:43</SmallCommitTime>
-                </TinyCommitTimeContainer>
-              </TinyCommitInfoContainer>
-            </SmallContainer>
-         </File>
-         <File>
-          <TinyContainer>
-              <FileName>Assemble 기획 아이디어 .txt</FileName>
-              <Comment>심심해서 추가해봤습니다.</Comment>
-            </TinyContainer>
-            <SmallContainer>
-              <TinyCommitInfoContainer>
-                <SmallCommitter>이성</SmallCommitter>
-                <TinyCommitTimeContainer>
-                  <SmallCommitDay>2022-07-25</SmallCommitDay>
-                  <SmallCommitTime>오후 5:23</SmallCommitTime>
-                </TinyCommitTimeContainer>
-              </TinyCommitInfoContainer>
-            </SmallContainer>
-         </File>
-         <File>
-          <TinyContainer>
-              <FileName>Assemble 기획 아이디어 .txt</FileName>
-              <Comment>로그인 페이지 제작했습니다.</Comment>
-            </TinyContainer>
-            <SmallContainer>
-              <TinyCommitInfoContainer>
-                <SmallCommitter>이성</SmallCommitter>
-                <TinyCommitTimeContainer>
-                  <SmallCommitDay>2022-07-20</SmallCommitDay>
-                  <SmallCommitTime>오전 1:43 </SmallCommitTime>
-                </TinyCommitTimeContainer>
-              </TinyCommitInfoContainer>
-            </SmallContainer>
-         </File>
+            <TinyContainer>
+                <FileName>Assemble 기획 아이디어 .txt</FileName>
+                <Comment>Assemble 디자인입니다. 배경이미지 제작 완료했습니다.</Comment>
+              </TinyContainer>
+              <SmallContainer>
+                <TinyCommitInfoContainer>
+                  <SmallCommitter>최재오</SmallCommitter>
+                  <TinyCommitTimeContainer>
+                    <SmallCommitDay> 2022-07-27</SmallCommitDay>
+                    <SmallCommitTime>오전 4:43</SmallCommitTime>
+                  </TinyCommitTimeContainer>
+                </TinyCommitInfoContainer>
+              </SmallContainer>
+          </File>
+         </a>
+         <a href='https://github.com/jschan0911/OOP1/files/9221854/default.docx'>
+          <File>
+            <TinyContainer>
+                <FileName>Assemble 기획 아이디어 .txt</FileName>
+                <Comment>심심해서 추가해봤습니다.</Comment>
+              </TinyContainer>
+              <SmallContainer>
+                <TinyCommitInfoContainer>
+                  <SmallCommitter>이성</SmallCommitter>
+                  <TinyCommitTimeContainer>
+                    <SmallCommitDay>2022-07-25</SmallCommitDay>
+                    <SmallCommitTime>오후 5:23</SmallCommitTime>
+                  </TinyCommitTimeContainer>
+                </TinyCommitInfoContainer>
+              </SmallContainer>
+          </File>
+         </a>
+         <a href='https://github.com/jschan0911/OOP1/files/9221855/icon.zip'>
+          <File>
+            <TinyContainer>
+                <FileName>Assemble 기획 아이디어 .txt</FileName>
+                <Comment>로그인 페이지 제작했습니다.</Comment>
+              </TinyContainer>
+              <SmallContainer>
+                <TinyCommitInfoContainer>
+                  <SmallCommitter>이성</SmallCommitter>
+                  <TinyCommitTimeContainer>
+                    <SmallCommitDay>2022-07-20</SmallCommitDay>
+                    <SmallCommitTime>오전 1:43 </SmallCommitTime>
+                  </TinyCommitTimeContainer>
+                </TinyCommitInfoContainer>
+              </SmallContainer>
+          </File>
+         </a>
         </FileContainer>
       </VersionBox>
     </MainContainer>

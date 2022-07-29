@@ -217,10 +217,11 @@ const TodoList = ({ apiUrl }) => {
 
   // 진행중인 task와 완료된 task 데이터 가져옴
   useEffect(() => {
+    console.log(apiUrl)
     axios.get(`${apiUrl}/main/`).then((res) => {
       setProcLists(res.data["To Do Lists"]);
       setDoneLists(res.data["End Lists"]);
-    });
+    }).catch(e => console.log(e));
   }, []);
 
   // 완료 task 체크박스 클릭 시 is_end 값 변경

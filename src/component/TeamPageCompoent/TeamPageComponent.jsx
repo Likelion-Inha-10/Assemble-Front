@@ -203,7 +203,7 @@ const TeamPageComponent = () => {
             <ListBox style={{marginRight: '28px'}}>
               <HeadText style={{marginLeft:'26px', marginTop:'15px'}}>공지사항</HeadText>
               <LineContainer style={{marginTop:'17px'}}>
-                <SmallTitle>속보 아무 일도 안일어남</SmallTitle>
+                <SmallTitle>속보 아무 일도 안 일어남</SmallTitle>
                 <TimeContainer>
                   <SmallTime style={{marginRight: '10px'}}>2022-07-29</SmallTime>
                   <SmallTime>오후 7:49</SmallTime>

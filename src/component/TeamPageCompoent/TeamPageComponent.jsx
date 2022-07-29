@@ -155,16 +155,12 @@ const TeamBox = styled.div`
 // 캘린더 컨테이너
 const CalenderContainer =styled.div`
   width: 1217px;
-  height: 1000px;
 
   margin-top: 30px;
-
-  background-color: black;
-
   display: flex;
   flex-direction: column;
-`;
 
+`;
 
 const TeamPageComponent = () => {
 
@@ -248,6 +244,7 @@ const TeamPageComponent = () => {
         </GroupBox>
         <CalenderContainer>
           <HeadText>캘린더</HeadText>
+            <Calender />
         </CalenderContainer> 
   
       </Container>

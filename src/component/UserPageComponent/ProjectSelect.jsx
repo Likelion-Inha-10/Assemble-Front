@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { AiOutlineMinusCircle } from "react-icons/ai";
 import { DesktopTower, HouseLine } from "phosphor-react";
+import { useNavigate } from "react-router-dom";
 
 // 팀 페이지 전체 박스
 const Container = styled.div`
@@ -163,6 +164,11 @@ const ProjectSelect = () => {
     setModify(!modify);
   };
 
+  const navigate = useNavigate();
+  const gotoTeampage = () => {
+    navigate('/teampage');
+  }
+
   return (
     <>
       <Container>
@@ -200,7 +206,7 @@ const ProjectSelect = () => {
             </Project>
           ) : (
             <Project>
-              <ProjectImage>
+              <ProjectImage onClick={gotoTeampage}>
                 <DesktopTower className="sumnailIcon" size={80} />
               </ProjectImage>
               <ProjectName>해커톤이성</ProjectName>

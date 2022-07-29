@@ -150,9 +150,18 @@ const TeamBox = styled.div`
   width: 168px;
   height: 168px;
   border-radius: 10px;
-  background-color: black;
+  background-color: #86b2c6;
   margin-right: 35px;
-`
+  color:#075995;
+
+  font-size: 100px;
+  font-weight: 700;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+`;
 // 캘린더 컨테이너
 const CalenderContainer =styled.div`
   width: 1217px;
@@ -244,13 +253,13 @@ const TeamPageComponent = () => {
         <GroupBox>
           <HeadText style={{marginLeft:'23px', marginTop:'15px'}}>그룹</HeadText>
           <TeamContainer>
-            <TeamBox />
-            <TeamBox />
-            <TeamBox />
+            <TeamBox>F</TeamBox>
+            <TeamBox>E</TeamBox>
+            <TeamBox>D</TeamBox>
           </TeamContainer>
         </GroupBox>
         <CalenderContainer>
-          <HeadText>캘린더</HeadText>
+          <HeadText style={{marginBottom:'21px'}}>캘린더</HeadText>
           <MiniContainer>
             <MiniCalendar />
           </MiniContainer>

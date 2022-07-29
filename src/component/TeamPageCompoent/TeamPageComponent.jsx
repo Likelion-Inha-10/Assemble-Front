@@ -213,18 +213,22 @@ const TeamPageComponent = () => {
     navigate('/vertool');
   }
 
+  const goToError = () =>{
+    navigate('/error');
+  }
+
   return (
     <div>
       <Container>
         <UpperContainer>
           <MenuBar>
-            <Menu style={{marginLeft:'95px'}}>공지사항</Menu>
-            <Menu>그룹</Menu>
-            <Menu>Task</Menu>
+            <Menu style={{marginLeft:'95px'}} onClick={goToError}>공지사항</Menu>
+            <Menu onClick={goToError}>그룹</Menu>
+            <Menu onClick={goToError}>Task</Menu>
             <Menu onClick={goToVerpage}>프로젝트</Menu>
-            <Menu style={{marginRight:'95px'}}>일정</Menu>
+            <Menu style={{marginRight:'95px'}} onClick={goToError}>일정</Menu>
           </MenuBar>
-          <NewButton>새 게시물</NewButton>
+          <NewButton onClick={goToError}>새 게시물</NewButton>
         </UpperContainer>
         <FirstContainer>
             <ListBox style={{marginRight: '28px'}}>

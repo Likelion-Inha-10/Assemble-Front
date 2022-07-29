@@ -6,7 +6,7 @@ const Warning = styled.img`
   position: absolute;
   width: 128px;
   height: 128px;
-  left: 692px;
+  left: 752px;
   top: 338px;
 `;
 
@@ -14,7 +14,7 @@ const BigText = styled.div`
   position: absolute;
   width: 181px;
   height: 29px;
-  left: 675px;
+  left: 735px;
   top: 501px;
 
   font-family: 'Noto Sans KR';
@@ -30,7 +30,7 @@ const SmallText = styled.div`
   position: absolute;
   width: 335px;
   height: 40px;
-  left: 592px;
+  left: 652px;
   top: 540px;
 
   font-family: 'Noto Sans KR';
@@ -53,7 +53,7 @@ const BackPage = styled.img`
   position: absolute;
   width: 156px;
   height: 40px;
-  left: 665px;
+  left: 725px;
   top: 604px;
 `;
 
@@ -62,7 +62,7 @@ const Error = () => {
   const navigate = useNavigate();
 
   const goToBack = () => {
-    navigate("/");
+    navigate("/teampage");
   }
   return (
     <>

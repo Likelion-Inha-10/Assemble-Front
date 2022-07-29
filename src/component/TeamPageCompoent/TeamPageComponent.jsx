@@ -254,7 +254,7 @@ const TeamPageComponent = () => {
           <HeadText style={{marginLeft:'23px', marginTop:'15px'}}>그룹</HeadText>
           <TeamContainer>
             <TeamBox>F</TeamBox>
-            <TeamBox>E</TeamBox>
+            <TeamBox>B</TeamBox>
             <TeamBox>D</TeamBox>
           </TeamContainer>
         </GroupBox>

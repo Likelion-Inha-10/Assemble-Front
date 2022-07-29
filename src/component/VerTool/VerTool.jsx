@@ -6,6 +6,7 @@ import { NavBarBox, NavLink } from '../NavBar';
 import TeamProfile from '../TeamProfile';
 import { useNavigate } from "react-router-dom";
 
+
 // 중간에 박스들을 중앙에 배열하기 위한 Container
 const MiddleContainer = styled.div`
   display: flex;
@@ -425,8 +426,6 @@ const VerTool = () => {
   const goToTeampage = () =>{
     navigate('/teampage');
   }
-
-
 
   return (
     <div>

@@ -18,7 +18,7 @@ const Container = styled.div`
   justify-content: space-between;
 `;
 
-const UserPage = () => {
+const UserPage = ({ apiUrl }) => {
   return (
     <>
       {/* 헤더 */}
@@ -29,7 +29,7 @@ const UserPage = () => {
         {/* 프로젝트 선택 부분 */}
         <ProjectSelect></ProjectSelect>
         {/* 투두리스트 부분 */}
-        <TodoList></TodoList>
+        <TodoList apiUrl={apiUrl}></TodoList>
         {/* 캘린더 부분 */}
         <Calender></Calender>
       </Container>

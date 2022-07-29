@@ -2,33 +2,14 @@ import { React, useState } from 'react';
 import styled from 'styled-components';
 import {AiFillCaretUp} from "react-icons/ai";
 import { AiFillCaretDown, AiOutlineDoubleRight } from "react-icons/ai";
+import { NavBarBox, NavLink } from '../NavBar';
+import TeamProfile from '../TeamProfile';
 
-// 팀 페이지 프사 있는 박스
-const TeamInfoContainer = styled.div`
-  width: 100%;
-
-  margin-top: 72px;
-  
-  border-radius : 10px;
-  
+// 중간에 박스들을 중앙에 배열하기 위한 Container
+const MiddleContainer = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
-  
-`;
-
-// 팀 프사 박스
-const TeamPicBox =styled.div`
-  width: 114px;
-  height: 114px;
-
-  border-radius: 40px;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
-
-  margin: 0px 0px 28px 146px;
-
-  background-image: url('/img/Desktop.png');
-  background-size: cover;
-  background-repeat: no-repeat;
 
   /* hr 태그 css */
   .tophr {
@@ -39,48 +20,6 @@ const TeamPicBox =styled.div`
   }
 
 `;
-
-// 팀 이름 텍스트
-const TeamName = styled.div`
-  font-size: 24px;
-  font-weight: 700;
-
-  margin-left: 40px;
-  margin-bottom: 25px;
-`;
-
-// 중간에 박스들을 중앙에 배열하기 위한 Container
-const MiddleContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-`;
-
-// 내비게이션 박스
-const NavBar = styled.div`
-  width: 1464px;
-  height: 52px;
-
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
-
-  padding-left: 140px;
-  margin-top: 6px;
-
-  display: flex;
-  align-items: center;
-`;
-
-// NavBar에 있는 링크버튼
-const NavLink = styled.div`
-  font-size: 16px;
-  font-weight: 700;
-  color:grey;
-
-  margin-right: 15px;
-`;
-
 
 // '목록' 버튼 넣을 컨테이너
 const ListButtonContainer = styled.div`
@@ -472,19 +411,16 @@ const VerTool = () => {
 
   return (
     <div>
-      <TeamInfoContainer>
-        <TeamPicBox />
-        <TeamName>멋쟁이사자처럼 인하대학교 해커톤 이성팀</TeamName>
-      </TeamInfoContainer>
+      <TeamProfile />
       <hr className='tophr'></hr>
       <MiddleContainer>
-        <NavBar>
+        <NavBarBox>
           <NavLink>마이페이지</NavLink>
           <NavLink><AiOutlineDoubleRight /></NavLink>
           <NavLink>멋쟁이사자처럼 인하대학교 해커톤 이성팀</NavLink>
           <NavLink><AiOutlineDoubleRight /></NavLink>
           <NavLink style={{color:'#075995'}}>프로젝트</NavLink>
-        </NavBar>
+        </NavBarBox>
         <ListButtonContainer>
           <ListButton>목록</ListButton>
         </ListButtonContainer>

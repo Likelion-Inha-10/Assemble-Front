@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 // todo 리스트 생성 컴포넌트
 // 수정 필요 (페이지 연결 식으로 하는 방법도 고려중)
@@ -8,7 +10,7 @@ import { useState } from "react";
 // 전체 박스
 const Container = styled.div`
   width: 280px;
-  height: 160px;
+  height: 350px;
 
   background: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -53,14 +55,14 @@ const XButton = styled.button`
   padding-right: 15px;
 `;
 
-// 일정 적는 부분
+// 제목 적는 부분
 const Input = styled.input`
   width: 200px;
   height: 30px;
 
   border: 0px;
   border-bottom: 1px solid #073255;
-  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.25);
+  /* box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.25); */
 
   font-weight: 400;
   font-size: 18px;
@@ -70,6 +72,26 @@ const Input = styled.input`
   text-align: center;
 
   margin-top: 20px;
+`;
+
+// 내용 적는 부분
+const TextArea = styled.textarea`
+  width: 200px;
+  height: 150px;
+
+  border: 1px solid #073255;
+  /* box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.25); */
+
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 26px;
+
+  opacity: 0.3;
+  text-align: center;
+
+  margin-top: 20px;
+
+  resize: none;
 `;
 
 // 취소 & 저장 버튼 박스
@@ -125,30 +147,65 @@ const SaveButton = styled.button`
   border: 0;
 `;
 
-const MakeToDo = () => {
-  const [out, setOut] = useState(false);
+const MakeToDo = ({ apiUrl }) => {
+  const [title, setTitle] = useState(""); // 제목 값 담는 변수
+  const [body, setBody] = useState(""); // 내용 값 담는 변수
+  const navigate = useNavigate();
 
-  const onClickOut = () => {
-    setOut(!out);
+  // 제목 값 저장
+  const onChangeTitle = (e) => {
+    setTitle(e.target.value);
+    // console.log(e.target.value);
+  };
+
+  // 내용 값 저장
+  const onChangeBody = (e) => {
+    setBody(e.target.value);
+  };
+
+  // 취소 버튼 클릭 시 userpage로 돌아감
+  const onClickCancel = () => {
+    navigate("/userpage");
+  };
+
+  // 저장 버튼 클릭 시 데이터 저장되고 userpage로 돌아감
+  const onClickSave = () => {
+    axios
+      .post(`${apiUrl}/create_tdl/`, {
+        title: title,
+        body: body,
+      })
+      .then(() => {
+        navigate("/userpage");
+      })
+      .catch((err) => {
+        console.log(err.response.data.message);
+      });
   };
 
   return (
     <>
-      {out ? (
-        ""
-      ) : (
-        <Container>
-          <TopBox>
-            <Top />
-            <XButton onClick={onClickOut}>X</XButton>
-          </TopBox>
-          <Input type={"text"} placeholder={"제목 및 시간 추가"} />
-          <ButtonBox>
-            <CancelButton>취소</CancelButton>
-            <SaveButton>저장</SaveButton>
-          </ButtonBox>
-        </Container>
-      )}
+      <Container>
+        <TopBox>
+          <Top />
+          <XButton>X</XButton>
+        </TopBox>
+        <Input
+          type={"text"}
+          placeholder={"제목"}
+          onChange={onChangeTitle}
+          value={title}
+        />
+        <TextArea
+          placeholder="내용"
+          onChange={onChangeBody}
+          value={body}
+        ></TextArea>
+        <ButtonBox>
+          <CancelButton onClick={onClickCancel}>취소</CancelButton>
+          <SaveButton onClick={onClickSave}>저장</SaveButton>
+        </ButtonBox>
+      </Container>
     </>
   );
 };

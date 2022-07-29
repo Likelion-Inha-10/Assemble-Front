@@ -11,6 +11,7 @@ import { GoTriangleDown, GoTriangleUp } from "react-icons/go";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Modal from "react-modal";
 
 // Todolist 전체 박스
 const Container = styled.div`
@@ -149,12 +150,46 @@ const IconBox = styled.div`
   align-items: center;
 `;
 
+// ----------------투두리스트 디테일 부분------------------
+// 제목
+const Title = styled.div`
+  width: 290px;
+  height: 120px;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 26px;
+  color: #706363;
+`;
+
+// 내용
+const Content = styled.div`
+  width: 290px;
+  height: 120px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 26px;
+  color: #706363;
+`;
+
+// 날짜
+const Date = styled.div`
+  width: 87px;
+  height: 26px;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 26px;
+  color: #706363;
+  align-self: flex-end;
+`;
+
 const TodoList = ({ apiUrl }) => {
   const [updown, setUpDown] = useState(true); // 완료 목록에서 화살표 클릭 시 행동을 위한 변수
   const [modify, setModify] = useState(false); // 편집 버튼 클릭 시 행동을 위한 변수
   const [proclists, setProcLists] = useState([]); // 진행중인 task 담는 배열
   const [donelists, setDoneLists] = useState([]); // 완료된 task 담는 배열
-  const [detail, setDetail] = useState([]); // 투두리스트 상세 내용 담는 배열
+  const [PIsOpen, setPIsOpen] = useState(false); // 진행중인 task 상세정보 모달 조절 변수
+  const [DIsOpen, setDIsOpen] = useState(false); // 완료된 task 상세정보 모달 조절 변수
+  const [detail, setDetail] = useState([]); // 디테일 정보 담는 배열
 
   const navigate = useNavigate();
 
@@ -202,19 +237,27 @@ const TodoList = ({ apiUrl }) => {
     });
   };
 
-  // task 상세내용 불러옴 (제목 & 내용)
-  const onClickDetail = (e) => {
-    axios.get(`${apiUrl}/tdl/${e.target.id}`).then((res) => {
-      // console.log(res.data);
-      setDetail(res.data);
-    });
-  };
-
   // '-'버튼 클릭 시 해당 task 삭제
   const onClickDelete = (e) => {
     axios.post(`${apiUrl}/delete_tdl/${e.target.id}`).then(() => {
       window.location.reload(true);
     });
+  };
+
+  // 진행중인 task 팝업창 true & 상세정보 데이터 가져옴
+  const onClickPDetail = (e) => {
+    axios.get(`${apiUrl}/tdl/${e.target.id}`).then((res) => {
+      setDetail(res.data["ToDoList"]);
+    });
+    setPIsOpen(true);
+  };
+
+  // 완료된 task 팝업창 true & 상세정보 데이터 가져옴
+  const onClickDDetail = (e) => {
+    axios.get(`${apiUrl}/tdl/${e.target.id}`).then((res) => {
+      setDetail(res.data["ToDoList"]);
+    });
+    setDIsOpen(true);
   };
 
   return (
@@ -267,12 +310,51 @@ const TodoList = ({ apiUrl }) => {
                     ) : (
                       <AiOutlineStar id={proclist.id} onClick={onClickStar} />
                     )}
-                    {/* 세로 메뉴 버튼 클릭 시 상세내용 볼 수 있음 (더 코드 짜야됨) */}
+                    {/* 누르면 팝업창 뜸 */}
                     <BsThreeDotsVertical
+                      key={proclist.id}
                       id={proclist.id}
-                      onClick={onClickDetail}
-                    ></BsThreeDotsVertical>
+                      onClick={onClickPDetail}
+                    />
                   </IconBox>
+                  {/* 진행중 상세정보 팝업창 */}
+                  <Modal
+                    isOpen={PIsOpen}
+                    onRequestClose={() => setPIsOpen(false)}
+                    style={{
+                      content: {
+                        display: "relative",
+                        top: "40%",
+                        left: "18%",
+                        width: "290px",
+                        height: "120px",
+                        background: "#ffffff",
+                        boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+                        borderRadius: "20px",
+
+                        fontFamily: "Noto Sans KR",
+                        fontStyle: "normal",
+                        padding: "20px",
+
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        textAlign: "center",
+                      },
+                      overlay: {
+                        position: "fixed",
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        backgroundColor: "rgba(255, 255, 255, 0.2)",
+                      },
+                    }}
+                  >
+                    <Title>{detail.title}</Title>
+                    <Content>{detail.body}</Content>
+                    <Date>{detail.writtendate}</Date>
+                  </Modal>
                 </TaskBox>
               );
             })}
@@ -330,12 +412,42 @@ const TodoList = ({ apiUrl }) => {
                             onClick={onClickStar}
                           />
                         )}
-                        {/* 세로 메뉴 버튼 클릭 시 상세내용 볼 수 있음 (더 코드 짜야됨) */}
+                        {/* 누르면 팝업창 뜸 */}
                         <BsThreeDotsVertical
                           id={donelist.id}
-                          onClick={onClickDetail}
-                        ></BsThreeDotsVertical>
+                          onClick={onClickDDetail}
+                        />
                       </IconBox>
+                      {/* task 상세정보 팝업창 */}
+                      <Modal
+                        isOpen={DIsOpen}
+                        onRequestClose={() => setDIsOpen(false)}
+                        style={{
+                          content: {
+                            display: "relative",
+                            top: "68%",
+                            left: "18%",
+                            width: "290px",
+                            height: "120px",
+                            background: "#ffffff",
+                            boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+                            borderRadius: "20px",
+
+                            fontFamily: "Noto Sans KR",
+                            fontStyle: "normal",
+                            padding: "20px",
+
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            textAlign: "center",
+                          },
+                        }}
+                      >
+                        <Title>{detail.title}</Title>
+                        <Content>{detail.body}</Content>
+                        <Date>{detail.writtendate}</Date>
+                      </Modal>
                     </TaskBox>
                   );
                 })

@@ -388,6 +388,14 @@ const Version = styled.div`
   }
 `;
 
+const FirstVersion = styled.div`
+  height: 26px;
+  font-size: 18px;
+  font-weight: 400px;
+  margin-left: 19px;
+  color: #075995;
+`;
+
 // 버전 넘버와 화살표 컨테이너
 const MicroContainer = styled.div`
   display: flex;
@@ -454,7 +462,7 @@ const VerTool = () => {
       <PlusContainer><Plus /></PlusContainer>
       <SubContainer>
         <MicroContainer>
-        <Version style={{marginLeft:'19px', color:'#075995'}}>version</Version>
+        <FirstVersion>Version </FirstVersion>
         {updown ? 
         (<AiFillCaretUp style={{color:'#075995'}} onClick={TriUPdown}></AiFillCaretUp>)
         : (<AiFillCaretDown style={{color:'#706363'}} onClick={TriUPdown}></AiFillCaretDown>)

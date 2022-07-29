@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import MiniCalendar from './MiniCalendar';
+import { FiPlus } from "react-icons/fi";
 
 
 // 메인 컨테이너
@@ -178,6 +179,32 @@ const MiniContainer = styled.div`
   justify-content: center;
 `;
 
+// 캘린더 옆에 박스
+const WhiteBox = styled.div`
+  width: 317px;
+  height:846px;
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+
+  margin-left: 30px;  
+`;
+
+// 흰 박스 안의 날짜 텍스트
+const DayText = styled.div`
+  font-weight: 400;
+  font-size: 18px;
+`;
+
+const TinyContainer = styled.div`
+  display: flex;
+
+  margin-top: 30px;
+  margin-left: 24px;
+`;
+
+
+
+
 const TeamPageComponent = () => {
 
   const navigate = useNavigate();
@@ -262,6 +289,12 @@ const TeamPageComponent = () => {
           <HeadText style={{marginBottom:'21px'}}>캘린더</HeadText>
           <MiniContainer>
             <MiniCalendar />
+            <WhiteBox>
+              <TinyContainer>
+                <DayText style={{marginRight:'200px'}}>22 일</DayText>
+                <FiPlus style={{color:'#0763A4'}} size={30}/>
+              </TinyContainer>
+            </WhiteBox>
           </MiniContainer>
         </CalenderContainer> 
       </Container>

@@ -55,7 +55,7 @@ const TeamProfile = () => {
   return (
     <div>
         <TeamInfoContainer>
-          <TeamPicBox><DesktopTower className='sumnailIcon' size={100} /></TeamPicBox>
+          <TeamPicBox><DesktopTower className='sumnailIcon' size={80} /></TeamPicBox>
           <TeamName>해커톤 이성팀</TeamName>
       </TeamInfoContainer>
     </div>

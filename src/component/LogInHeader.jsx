@@ -22,7 +22,7 @@ const Logo = styled.img`
 // 상단바 환영 문구
 const Content = styled.div`
   position: absolute;
-  left: 1052px;
+  left: 1152px;
   top: 42px;
 
   font-family: 'Noto Sans KR';
@@ -38,7 +38,7 @@ const Alarm1 = styled.img`
   position: absolute;
   width: 25px;
   height: 23px;
-  left: 1290px;
+  left: 1370px;
   top: 38px;
 `;
 
@@ -47,7 +47,7 @@ const Alarm2 = styled.img`
   position: absolute;
   width: 8px;
   height: 8px;
-  left: 1289px;
+  left: 1369px;
   top: 35px;
 `;
 
@@ -56,7 +56,7 @@ const Alarm3 = styled.img`
   position: absolute;
   width: 12px;
   height: 3px;
-  left: 1296px;
+  left: 1376px;
   top: 63px;
 `;
 
@@ -65,7 +65,7 @@ const Profile = styled.img`
   position: absolute;
   width: 50px;
   height: 50px;
-  left: 1372px;
+  left: 1472px;
   top: 26px;
 `;
 

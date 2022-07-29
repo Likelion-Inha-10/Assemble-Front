@@ -106,8 +106,8 @@ const Days = styled.div`
 
 // 요일(7월 날짜 숫자)
 const Dates = styled.div`
-  width: 17px;
-  height: 26px;
+  width: 25px;
+  height: 25px;
 
   font-family: "Noto Sans KR";
   font-style: normal;
@@ -116,6 +116,14 @@ const Dates = styled.div`
   line-height: 26px;
   text-align: center;
   color: ${(props) => props.color || "#FF3C3C"};
+  border-radius: 50%;
+
+  :hover{
+    background-color: #00FA9A;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  transition: 0.3s;
 `;
 
 // 스케쥴 짧은 박스 
@@ -292,6 +300,19 @@ const ModalSave = styled.img`
   height: 30px;
 `;
 
+const InputTitle = styled.div`
+  /* 아이디 입력 박스에서 input 태그에 대한 css */
+  .inputTitle {
+    width: 100%;
+    height: auto;
+
+    padding-left: 20.02px;
+
+    text-align: left;
+  }
+`;
+
+
 const Calender = ({ color, length, hight, changecolor }) => {
 
   const [modify, setModify] = useState(false);
@@ -300,6 +321,7 @@ const Calender = ({ color, length, hight, changecolor }) => {
   const [modalIsOpen3, setModalIsOpen3] = useState(false);
   const [modalIsOpen4, setModalIsOpen4] = useState(false);
   const [modalIsOpen5, setModalIsOpen5] = useState(false);
+  const [modalIsOpen6, setModalIsOpen6] = useState(false);
 
   const onClickModify = () => {
     setModify(!modify);
@@ -310,7 +332,7 @@ const Calender = ({ color, length, hight, changecolor }) => {
       <Container>
         <ListText>개인 캘린더</ListText>
         <ModifyText onClick={onClickModify}>
-          {modify ? "저장" : "편집"}
+          {modify ? "" : ""}
         </ModifyText>
         <CalendarBox>
           <SelectDateBox>
@@ -330,73 +352,73 @@ const Calender = ({ color, length, hight, changecolor }) => {
             <Days color="blue">토</Days>
           </DayBox>
           <DateBox>
-            <Dates color= "rgba(255, 59, 59, 0.3)">26</Dates>
-            <Dates color= "rgba(0, 0, 0, 0.3)">27</Dates>
-            <Dates color= "rgba(0, 0, 0, 0.3)">28</Dates>
-            <Dates color= "rgba(0, 0, 0, 0.3)">29</Dates>
-            <Dates color= "rgba(0, 0, 0, 0.3)">30</Dates>
-            <Dates color= "black">1</Dates>
-            <Dates color= "blue">2</Dates>
+            <Dates color= "rgba(255, 59, 59, 0.3)" onClick={() => setModalIsOpen6(true)}>26</Dates>
+            <Dates color= "rgba(0, 0, 0, 0.3)" onClick={() => setModalIsOpen6(true)}>27</Dates>
+            <Dates color= "rgba(0, 0, 0, 0.3)" onClick={() => setModalIsOpen6(true)}>28</Dates>
+            <Dates color= "rgba(0, 0, 0, 0.3)" onClick={() => setModalIsOpen6(true)}>29</Dates>
+            <Dates color= "rgba(0, 0, 0, 0.3)" onClick={() => setModalIsOpen6(true)}>30</Dates>
+            <Dates color= "black" onClick={() => setModalIsOpen6(true)}>1</Dates>
+            <Dates color= "blue" onClick={() => setModalIsOpen6(true)}>2</Dates>
           </DateBox>
           <DateBox>
-            <Dates color= "red">3</Dates>
-            <Dates color= "black">4</Dates>
-            <Dates color= "black">5</Dates>
-            <Dates color= "black">6</Dates>
-            <Dates color= "black">7</Dates>
-            <Dates color= "black">8</Dates>
-            <Dates color= "blue">9</Dates>
+            <Dates color= "red" onClick={() => setModalIsOpen6(true)}>3</Dates>
+            <Dates color= "black" onClick={() => setModalIsOpen6(true)}>4</Dates>
+            <Dates color= "black" onClick={() => setModalIsOpen6(true)}>5</Dates>
+            <Dates color= "black" onClick={() => setModalIsOpen6(true)}>6</Dates>
+            <Dates color= "black" onClick={() => setModalIsOpen6(true)}>7</Dates>
+            <Dates color= "black" onClick={() => setModalIsOpen6(true)}>8</Dates>
+            <Dates color= "blue" onClick={() => setModalIsOpen6(true)}>9</Dates>
           </DateBox>
-          <ScheduleBox color="#F1A23E" length="148px" hight="0px" changecolor="#FB8C00" onClick={() => setModalIsOpen3(true)}>
+          <ScheduleBox color="#F1A23E" length="152px" hight="0px" changecolor="#FB8C00" onClick={() => setModalIsOpen3(true)}>
             <SceduleText>친구 약속</SceduleText>
           </ScheduleBox>
           <ScheduleBox color="#8280FF" length="670px" hight="0px" changecolor="#0500FF" onClick={() => setModalIsOpen4(true)}>
             <SceduleText>멋사 세션</SceduleText>
           </ScheduleBox>
           <DateBox>
-            <Dates color= "red">10</Dates>
-            <Dates color= "black">11</Dates>
-            <Dates color= "black">12</Dates>
-            <Dates color= "balck">13</Dates>
-            <Dates color= "black">14</Dates>
-            <Dates color= "black">15</Dates>
-            <Dates color= "blue">16</Dates>
+            <Dates color= "red" onClick={() => setModalIsOpen6(true)}>10</Dates>
+            <Dates color= "black" onClick={() => setModalIsOpen6(true)}>11</Dates>
+            <Dates color= "black" onClick={() => setModalIsOpen6(true)}>12</Dates>
+            <Dates color= "balck" onClick={() => setModalIsOpen6(true)}>13</Dates>
+            <Dates color= "black" onClick={() => setModalIsOpen6(true)}>14</Dates>
+            <Dates color= "black" onClick={() => setModalIsOpen6(true)}>15</Dates>
+            <Dates color= "blue" onClick={() => setModalIsOpen6(true)}>16</Dates>
           </DateBox>
-          <ScheduleBox color="#B282CC" length="278px" hight="0px" changecolor="#AC26F5" onClick={() => setModalIsOpen2(true)}>
+          <ScheduleBox color="#B282CC" length="280px" hight="0px" changecolor="#AC26F5" onClick={() => setModalIsOpen2(true)}>
             <SceduleText>해커톤 회의</SceduleText>
           </ScheduleBox>
           <ScheduleBox color="#B282CC" length="538px" hight="0px" changecolor="#AC26F5" onClick={() => setModalIsOpen1(true)}>
             <SceduleText>해커톤 회의</SceduleText>
           </ScheduleBox>
           <DateBox>
-            <Dates color= "red">17</Dates>
-            <Dates color= "black">18</Dates>
-            <Dates color= "black">19</Dates>
-            <Dates color= "balck">20</Dates>
-            <Dates color= "black">21</Dates>
-            <Dates color= "black">22</Dates>
-            <Dates color= "blue">23</Dates>
+            <Dates color= "red" onClick={() => setModalIsOpen6(true)}>17</Dates>
+            <Dates color= "black" onClick={() => setModalIsOpen6(true)}>18</Dates>
+            <Dates color= "black" onClick={() => setModalIsOpen6(true)}>19</Dates>
+            <Dates color= "balck" onClick={() => setModalIsOpen6(true)}>20</Dates>
+            <Dates color= "black" onClick={() => setModalIsOpen6(true)}>21</Dates>
+            <Dates color= "black" onClick={() => setModalIsOpen6(true)}>22</Dates>
+            <Dates color= "blue" onClick={() => setModalIsOpen6(true)}>23</Dates>
           </DateBox>
-          <ScheduleBox2 color="#F6CBD1" length="145px" hight="0px" changecolor="#FF647A" onClick={() => setModalIsOpen5(true)}>
+          <ScheduleBox2 color="#F6CBD1" length="150px" hight="0px" changecolor="#FF647A" onClick={() => setModalIsOpen5(true)}>
             <SceduleText2>계절학기 시험기간</SceduleText2>
           </ScheduleBox2>
           <DateBox>
-            <Dates color= "red">24</Dates>
-            <Dates color= "black">25</Dates>
-            <Dates color= "black">26</Dates>
-            <Dates color= "balck">27</Dates>
-            <Dates color= "black">28</Dates>
-            <Dates color= "black">29</Dates>
-            <Dates color= "blue">30</Dates>
+            <Dates color= "red" onClick={() => setModalIsOpen6(true)}>24</Dates>
+            <Dates color= "black" onClick={() => setModalIsOpen6(true)}>25</Dates>
+            <Dates color= "black" onClick={() => setModalIsOpen6(true)}>26</Dates>
+            <Dates color= "balck" onClick={() => setModalIsOpen6(true)}>27</Dates>
+            <Dates color= "black" onClick={() => setModalIsOpen6(true)}>28</Dates>
+            <Dates color= "black" onClick={() => setModalIsOpen6(true)}>29</Dates>
+            <Dates color= "blue" onClick={() => setModalIsOpen6(true)}>30</Dates>
           </DateBox>
           <DateBox>
-            <Dates color= "red">31</Dates>
-            <Dates color= "rgba(0, 0, 0, 0.3)">1</Dates>
-            <Dates color= "rgba(0, 0, 0, 0.3)">2</Dates>
-            <Dates color= "rgba(0, 0, 0, 0.3)">3</Dates>
-            <Dates color= "rgba(0, 0, 0, 0.3)">4</Dates>
-            <Dates color= "rgba(0, 0, 0, 0.3)">5</Dates>
-            <Dates color= "rgba(7, 89, 149, 0.3)">6</Dates>
+            <Dates color= "red" onClick={() => setModalIsOpen6(true)}>31</Dates>
+            <Dates color= "rgba(0, 0, 0, 0.3)" onClick={() => setModalIsOpen6(true)}>1</Dates>
+            <Dates color= "rgba(0, 0, 0, 0.3)" onClick={() => setModalIsOpen6(true)}>2</Dates>
+            <Dates color= "rgba(0, 0, 0, 0.3)" onClick={() => setModalIsOpen6(true)}>3</Dates>
+            <Dates color= "rgba(0, 0, 0, 0.3)" onClick={() => setModalIsOpen6(true)}>4</Dates>
+            <Dates color= "rgba(0, 0, 0, 0.3)" onClick={() => setModalIsOpen6(true)}>5</Dates>
+            <Dates color= "rgba(7, 89, 149, 0.3)" onClick={() => setModalIsOpen6(true)}>6</Dates>
           </DateBox>
           
           <Modal isOpen={modalIsOpen1} onRequestClose={() => setModalIsOpen1(false)}
@@ -532,6 +554,41 @@ const Calender = ({ color, length, hight, changecolor }) => {
             <ModalText>해커톤 이성 TEAM</ModalText>
             <ModalDelete>삭제</ModalDelete>
             <ModalSave src={"/img/save.png"} alt="save" onClick={() => setModalIsOpen5(false)}/>
+          </Modal>
+
+          <Modal isOpen={modalIsOpen6} onRequestClose={() => setModalIsOpen6(false)}
+          style={{
+            content: {
+              position: 'absolute',
+              top: '400px',
+              left: '600px',
+              width: '343px',
+              height: '146px',
+              border: '1px solid #075995',
+              overflow: 'auto',
+              WebkitOverflowScrolling: 'touch',
+              borderRadius: '20px',
+              outline: 'none',
+              padding: '20px'
+            }
+          }}>
+            <ModalContent>
+              <InputTitle>
+                <input
+                  class="inputId"
+                  type={"text"}
+                  placeholder={"일정명을 입력해주세요"}
+                ></input>
+              </InputTitle>
+            </ModalContent>
+            <ModalSchedule>7월 18일 (월요일) - 7월 20일 (수요일)</ModalSchedule>
+            <ModalGroup>그룹</ModalGroup>
+            <ModalTime src={"/img/time.png"} alt="time" />
+            <ModalBox src={"/img/rectangle.png"} alt="rectangle" />
+            <ModalColor src={"/img/teambox.png"} alt="color" />
+            <ModalText>해커톤 이성 TEAM</ModalText>
+            <ModalDelete>삭제</ModalDelete>
+            <ModalSave src={"/img/save.png"} alt="save" onClick={() => setModalIsOpen6(false)}/>
           </Modal>
         </CalendarBox>
       </Container>

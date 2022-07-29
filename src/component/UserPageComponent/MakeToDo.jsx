@@ -7,6 +7,16 @@ import axios from "axios";
 // todo 리스트 생성 컴포넌트
 // 수정 필요 (페이지 연결 식으로 하는 방법도 고려중)
 
+//전체 페이지 박스
+const Body = styled.div`
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 // 전체 박스
 const Container = styled.div`
   width: 280px;
@@ -185,6 +195,7 @@ const MakeToDo = ({ apiUrl }) => {
 
   return (
     <>
+    <Body>
       <Container>
         <TopBox>
           <Top />
@@ -206,6 +217,7 @@ const MakeToDo = ({ apiUrl }) => {
           <SaveButton onClick={onClickSave}>저장</SaveButton>
         </ButtonBox>
       </Container>
+    </Body>
     </>
   );
 };

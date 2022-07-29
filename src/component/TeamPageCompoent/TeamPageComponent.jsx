@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import Calender from '../UserPageComponent/Calender';
+
 
 // 메인 컨테이너
 const Container =styled.div`
@@ -244,9 +244,7 @@ const TeamPageComponent = () => {
         </GroupBox>
         <CalenderContainer>
           <HeadText>캘린더</HeadText>
-            <Calender />
         </CalenderContainer> 
-  
       </Container>
     </div>
   );
